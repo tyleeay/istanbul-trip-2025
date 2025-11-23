@@ -180,14 +180,14 @@ html {
     transform: translateX(5px); /* 滑鼠移上去往右移一點點 */
 }
 
-/* --- 「回到頂部」按鈕的樣式 (升級版) --- */
+/* --- 「回到頂部」按鈕樣式 (強力修復版) --- */
 
 #back-to-top-btn {
     display: block;
-    position: fixed; /* 再次強力確保它是 fixed */
-    bottom: 30px;    /* 調整！離底部 30px */
-    right: 30px;     /* 調整！離右邊 30px */
-    z-index: 100;    
+    position: fixed; /* 100% 固定在螢幕上 */
+    bottom: 30px;    /* 離底部 30px */
+    right: 30px;     /* 離右邊 30px (修復偏左問題) */
+    z-index: 100;    /* 確保在最上層 */
     
     width: 50px;           
     height: 50px;          
@@ -195,26 +195,22 @@ html {
     border-radius: 50%; 
     text-decoration: none; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    position: relative;
+    position: relative; /* 為了定位箭頭 */
     
-    /* 關鍵！預設狀態是「隱藏」的 */
-    opacity: 0; /* 預設全透明 */
-    visibility: hidden; /* 預設隱藏 */
-    transform: translateY(10px); /* 預設往下移一點 (為了做動畫) */
+    /* 我們讓它永遠顯示，不再隱藏 */
+    opacity: 1; 
+    visibility: visible;
     
-    /* 讓「浮現」的過程有動畫 */
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease; /* 保留 hover 動畫 */
 }
 
-/* 這是我們用 JS 新增的 class */
-#back-to-top-btn.show-btn {
-    /* 當 .show-btn 被加上時 */
-    opacity: 1; /* 變不透明 */
-    visibility: visible; /* 變可見 */
-    transform: translateY(0); /* 移回原位 */
+/* 滑鼠移上去的樣式 */
+#back-to-top-btn:hover {
+    background-color: #3f5870;
+    transform: translateY(-3px); /* 往上浮一點 (這個不會壞事) */
 }
 
-/* 畫箭頭 (這段不變，但要放在 #back-to-top-btn 下方) */
+/* 畫箭頭 (這段不變) */
 #back-to-top-btn::before {
     content: ''; 
     position: absolute; 
@@ -225,16 +221,4 @@ html {
     display: inline-block;
     padding: 5px; 
     transform: translate(-50%, -75%) rotate(-135deg);
-}
-
-/* 滑鼠移上去的樣式 (保留) */
-#back-to-top-btn:hover {
-    background-color: #3f5870;
-    transform: translateY(-3px); /* 往上浮一點 */
-}
-
-/* 修正：當 .show-btn 存在時的 hover 效果 */
-#back-to-top-btn.show-btn:hover {
-    background-color: #3f5870;
-    transform: translateY(-3px); /* 只有在顯示時，hover 才有往上浮的效果 */
 }
