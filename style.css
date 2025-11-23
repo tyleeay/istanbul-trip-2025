@@ -47,31 +47,29 @@ body {
 /* 標題區域的樣式 */
 .hero {
     text-align: center;
-    padding: 5rem 1rem; /* 保持一樣的留白 */
+    padding: 8rem 1rem; /* 我把上下留白拉得更開，更有氣勢 */
 
-    /* --- 以下是新增的背景圖片 --- */
+    /* --- 以下是您專屬的背景圖 --- */
+    /* 我們加上 40% 的「黑色」濾鏡，並使用您上傳的 'istanbul-bg.jpg' */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg');
 
-    /* * 我們用了 linear-gradient 技巧來加上一層 30% 透明度的白色濾鏡
-     * 疊在我們的背景圖 url(...) 上面 
-     */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('http://googleusercontent.com/image_collection/image_retrieval/8920581421961775690_1');
-
-    background-size: cover; /* 讓圖片填滿整個區域 */
-    background-position: center; /* 圖片置中 */
-    background-repeat: no-repeat; /* 圖片不重複 */
+    background-size: cover; /* 填滿 */
+    background-position: center; /* 圖片置中 (這張圖置中超好看) */
+    background-repeat: no-repeat; /* 不重複 */
 }
 
 .hero h1 {
-    /* 我們不再需要指定 Playfair Display 了，
-       它會自動繼承 body 的 'TanukiMarker' 字體
-    */
+    font-family: 'TanukiMarker', sans-serif;
     font-size: 3.5rem; 
-    color: #2c3e50; 
+    color: #FFFFFF; /* 關鍵：改成「白色」文字 */
     margin-bottom: 1rem;
+    /* 加上一點點文字陰影，讓它更立體 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero .date {
-    font-size: 1.25rem; /* 稍微放大日期 */
-    color: #7f8c8d;
-    font-style: normal; /* 把之前的斜體拿掉，讓字體本身發揮 */
+    font-size: 1.25rem; 
+    color: #f0f0f0; /* 關鍵：改成「亮灰色」文字 */
+    font-style: normal; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
