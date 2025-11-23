@@ -3,7 +3,7 @@
 */
 @font-face {
     font-family: 'TanukiMarker'; /* 這是我們在 CSS 裡要用的名字 */
-    src: url('wawati-sc.otf') format('truetype'); /* ↑↑↑ 關鍵！請確認這個檔名
+    src: url('wawati-tc.otf') format('truetype'); /* ↑↑↑ 關鍵！請確認這個檔名
             和您上傳到 GitHub 的「一模一樣」！
          */
     font-weight: normal;
