@@ -1,4 +1,4 @@
-/* --- 這是「完整版」的 style.css (v1.2) --- */
+/* --- 這是「完整版」的 style.css (v1.3) --- */
 
 /* 1. 字體定義 */
 @font-face {
@@ -19,14 +19,8 @@ body {
     background-color: #fdfdfd; 
     color: #333;
 
-    /* --- ↓↓↓ 關鍵修復！ ↓↓↓ --- */
-    /* 因為導覽列 (navbar) 變成了 fixed (浮動)，
-      我們必須在 body 加上 padding-top，
-      把「整個頁面」往下推，才能露出被蓋住的封面。
-      (1.2rem * 2) + 1rem (字高) ≈ 3.4rem。我們抓 5rem 比較保險。
-    */
+    /* (v1.2) 因為導覽列是 fixed，我們必須把頁面往下推 */
     padding-top: 5rem;
-    /* --- ↑↑↑ 修復結束 ↑↑↑ --- */
 }
 
 /* 讓錨點連結點擊時，有「平滑滾動」的動畫效果 */
@@ -34,31 +28,33 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 3. 導覽列 (防彈修復版！) */
+/* 3. 導覽列 (v1.3 終極版！) */
 .navbar {
     display: flex;
     list-style: none;
     padding: 1.2rem; 
-    justify-content: center;
+    justify-content: center; /* 置中 */
     gap: 2rem;
     
-    /* --- ↓↓↓ 全新升級！Fixed & Glass Effect ↓↓↓ --- */
+    /* --- ↓↓↓ Fixed & Glass Effect ↓↓↓ --- */
     
-    /* 1. 讓背景半透明 */
     background-color: rgba(44, 62, 80, 0.8); /* 80% 透明度 */
-
-    /* 2. 讓它「永遠」固定在頂部 (防彈修復) */
     position: fixed;
     top: 0;
-    left: 0; /* 確保它靠左 */
-    width: 100%; /* 確保它 100% 寬 */
-    z-index: 1000; /* 確保它在最上層 */
+    left: 0; 
+    width: 100%; /* 100% 寬 */
+    z-index: 1000; 
 
-    /* 3. 「液態玻璃」模糊特效 */
+    /* --- ↓↓↓ 關鍵修復！(v1.3) ↓↓↓ --- */
+    /* 這行是告訴瀏覽器：
+      width: 100% 的寬度「包含」padding
+      這樣總寬度才不會超過 100%
+    */
+    box-sizing: border-box;
+    /* --- ↑↑↑ 修復結束 ↑↑↑ --- */
+
     -webkit-backdrop-filter: blur(10px); /* 支援 Safari */
     backdrop-filter: blur(10px); /* 標準語法 */
-    
-    /* --- ↑↑↑ 升級結束 ↑↑↑ --- */
 }
 
 .navbar a {
@@ -73,7 +69,6 @@ html {
     text-align: center;
     padding: 8rem 1rem; 
     
-    /* --- 關鍵！背景圖在這裡 --- */
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.png');
     
     background-size: cover;
@@ -81,7 +76,7 @@ html {
     background-repeat: no-repeat;
 }
 
-/* 5. 內容區塊 ... (以下程式碼和 v1.1 相同) ... */
+/* 5. 內容區塊 ... (以下程式碼和 v1.2 相同) ... */
 
 .hero h1 {
     font-family: 'TanukiMarker', sans-serif;
