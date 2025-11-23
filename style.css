@@ -1,43 +1,50 @@
-/* 這是一個基本的樣式重設，讓排版更一致 */
+/* 基礎重設，並設定「文青風」的預設字體和背景 */
 body, h1, p, ul {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* 預設字體使用 Montserrat */
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: #f4f7f6; /* 頁面背景色 */
+    background-color: #fdfdfd; /* 柔和的米白色背景 */
+    color: #333; /* 基本文字顏色 */
 }
 
 /* 導覽列的樣式 */
 .navbar {
-    display: flex; /* 讓選項橫向排列 */
-    list-style: none; /* 移除項目符號 */
-    background-color: #333; /* 導覽列背景色 */
-    padding: 1rem;
-    justify-content: center; /* 讓選項置中 */
-    gap: 1.5rem; /* 選項之間的間距 */
+    display: flex;
+    list-style: none;
+    background-color: #2c3e50; /* 更有質感的「深石板灰」 */
+    padding: 1.2rem; /* 讓導覽列高一點 */
+    justify-content: center;
+    gap: 2rem; /* 選項間距拉開 */
 }
 
 .navbar a {
-    color: white; /* 連結文字顏色 */
-    text-decoration: none; /* 移除底線 */
-    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-weight: 400; /* 不用粗體，更秀氣 */
+    font-size: 0.9rem;
+    letter-spacing: 0.5px; /* 微微增加字距 */
 }
 
 /* 標題區域的樣式 */
 .hero {
-    text-align: center; /* 文字置中 */
-    padding: 4rem 1rem; /* 上下留白多一點 */
+    text-align: center;
+    padding: 5rem 1rem; /* 上下留白拉到最開 */
 }
 
 .hero h1 {
-    font-size: 2.5rem; /* 標題字體放大 */
-    color: #2c3e50; /* 標題顏色 */
-    margin-bottom: 0.5rem; /* 標題和日期的間距 */
+    /* 指定使用我們下載的 Playfair Display 標題字體 */
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; /* 標題加大，更有氣勢 */
+    color: #2c3e50; /* 標題顏色呼應導覽列 */
+    margin-bottom: 1rem;
 }
 
 .hero .date {
-    font-size: 1.2rem; /* 日期字體大小 */
-    color: #7f8c8d; /* 日期顏色 */
+    font-size: 1.1rem;
+    color: #7f8c8d; /* 日期顏色不變，保持低調 */
+    font-style: italic; /* 讓日期有點斜體，更雅緻 */
 }
