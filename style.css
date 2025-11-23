@@ -47,7 +47,18 @@ body {
 /* 標題區域的樣式 */
 .hero {
     text-align: center;
-    padding: 5rem 1rem; 
+    padding: 5rem 1rem; /* 保持一樣的留白 */
+
+    /* --- 以下是新增的背景圖片 --- */
+
+    /* * 我們用了 linear-gradient 技巧來加上一層 30% 透明度的白色濾鏡
+     * 疊在我們的背景圖 url(...) 上面 
+     */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('http://googleusercontent.com/image_collection/image_retrieval/8920581421961775690_1');
+
+    background-size: cover; /* 讓圖片填滿整個區域 */
+    background-position: center; /* 圖片置中 */
+    background-repeat: no-repeat; /* 圖片不重複 */
 }
 
 .hero h1 {
