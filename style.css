@@ -1,24 +1,17 @@
-/* 步驟 1：在這裡定義您的「私房字體」
-   我們幫這個字體取一個 CSS 內部才知道的名字，叫做 'TanukiMarker'
-*/
+/* --- 這是「完整版」的 style.css --- */
+
+/* 1. 字體定義 */
 @font-face {
-    font-family: 'TanukiMarker'; /* 這是我們在 CSS 裡要用的名字 */
-    src: url('tanuki_permanent_marker.ttf') format('truetype'); /* ↑↑↑ 關鍵！請確認這個檔名
-            和您上傳到 GitHub 的「一模一樣」！
-         */
+    font-family: 'TanukiMarker'; 
+    src: url('tanuki_permanent_marker.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-/* 步驟 2：將 'TanukiMarker' 應用到所有元素 
-*/
+/* 2. 基礎設定 (包含字體) */
 body, h1, p, ul, a {
     margin: 0;
     padding: 0;
-    /* 全面替換！
-       瀏覽器會先試著用 'TanukiMarker'，
-       如果失敗了（例如檔名打錯），它會退一步用 sans-serif (系統預設的無襯線體)
-    */
     font-family: 'TanukiMarker', sans-serif;
 }
 
@@ -27,7 +20,12 @@ body {
     color: #333;
 }
 
-/* 導覽列的樣式 */
+/* 讓錨點連結點擊時，有「平滑滾動」的動畫效果 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 3. 導覽列 */
 .navbar {
     display: flex;
     list-style: none;
@@ -40,95 +38,82 @@ body {
 .navbar a {
     color: white;
     text-decoration: none;
-    font-size: 1rem; /* marker 字體通常比較花俏，稍微放大一點 */
+    font-size: 1rem;
     letter-spacing: 0.5px; 
 }
 
-/* 標題區域的樣式 */
+/* 4. 封面 (Hero) - 包含背景圖 */
 .hero {
     text-align: center;
-    padding: 8rem 1rem; /* 我把上下留白拉得更開，更有氣勢 */
-
-    /* --- 以下是您專屬的背景圖 --- */
-    /* 我們加上 40% 的「黑色」濾鏡，並使用您上傳的 'istanbul-bg.jpg' */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.png');
-
-    background-size: cover; /* 填滿 */
-    background-position: center; /* 圖片置中 (這張圖置中超好看) */
-    background-repeat: no-repeat; /* 不重複 */
+    padding: 8rem 1rem; 
+    
+    /* --- 關鍵！背景圖在這裡 --- */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.jpg');
+    
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
 }
 
 .hero h1 {
     font-family: 'TanukiMarker', sans-serif;
     font-size: 3.5rem; 
-    color: #FFFFFF; /* 關鍵：改成「白色」文字 */
+    color: #FFFFFF; /* 白色文字 */
     margin-bottom: 1rem;
-    /* 加上一點點文字陰影，讓它更立體 */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero .date {
     font-size: 1.25rem; 
-    color: #f0f0f0; /* 關鍵：改成「亮灰色」文字 */
+    color: #f0f0f0; /* 亮灰色文字 */
     font-style: normal; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* --- 這是新加入的「內容區塊」樣式 --- */
-
-/* 讓錨點連結點擊時，有「平滑滾動」的動畫效果 */
-html {
-    scroll-behavior: smooth;
-}
-
-/* 內容區塊的基礎排版 */
+/* 5. 內容區塊 (行程) */
 .content-block {
-    padding: 3rem 1.5rem; /* 上下留白多一點 */
-    max-width: 900px; /* 內容不要太寬，在電腦上才好閱讀 */
-    margin: 0 auto; /* 讓整個區塊置中 */
+    padding: 3rem 1.5rem; 
+    max-width: 900px; 
+    margin: 0 auto; 
 }
 
-/* 內容區塊的大標題 (H2) */
 .content-block h2 {
     font-family: 'TanukiMarker', sans-serif;
     font-size: 2.5rem; 
-    color: #2c3e50; /* 呼應導覽列的深色 */
+    color: #2c3e50; 
     text-align: center;
     margin-bottom: 2.5rem;
 }
 
-/* 內容區塊的副標題 (H3) */
 .content-block h3 {
     font-family: 'TanukiMarker', sans-serif;
     font-size: 1.8rem;
     color: #333;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #eeeeee; /* 文青風的淺色底線 */
+    border-bottom: 2px solid #eeeeee; 
     padding-bottom: 0.5rem;
 }
 
-/* 航班資訊 (用 grid 排版，在電腦上會自動變 2 欄) */
+/* 6. 航班資訊 */
 .flight-info {
     margin-bottom: 3rem;
     display: grid; 
-    grid-template-columns: 1fr; /* 手機上預設 1 欄 */
+    grid-template-columns: 1fr; 
     gap: 1.5rem;
 }
 
-/* 電腦版 (寬度大於 768px 時) */
 @media (min-width: 768px) {
     .flight-info {
-        grid-template-columns: 1fr 1fr; /* 變成 2 欄 */
+        grid-template-columns: 1fr 1fr; 
     }
 }
 
-/* 航班卡片 */
 .flight-card {
-    background-color: #ffffff; /* 白色卡片 */
-    border: 1px solid #e0e0e0; /* 非常淺的邊框 */
-    border-radius: 8px; /* 圓角 */
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
     padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); /* 非常淡的陰影 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
 }
 
 .flight-card h4 {
@@ -141,27 +126,26 @@ html {
 
 .flight-card p {
     font-size: 1rem;
-    line-height: 1.7; /* 拉開行高 */
+    line-height: 1.7; 
     margin-bottom: 0.5rem;
 }
 
 .flight-card p strong {
     display: inline-block;
-    width: 100px; /* 讓標籤對齊 (例如 "航班:") */
+    width: 100px; 
     color: #555;
 }
 
-/* 每日行程的連結列表 */
+/* 7. 每日行程連結 */
 .daily-schedule {
     margin-top: 2rem;
 }
 
 .day-links {
-    list-style: none; /* 拿掉圓點 */
+    list-style: none; 
     padding-left: 0;
 }
 
-/* 模擬「子頁面」的連結按鈕 */
 .day-links li a {
     display: block;
     padding: 1.2rem 1rem;
@@ -172,22 +156,23 @@ html {
     text-decoration: none;
     color: #333;
     font-size: 1.1rem;
-    transition: all 0.2s ease-in-out; /* 加上一點點動畫 */
+    transition: all 0.2s ease-in-out;
 }
 
 .day-links li a:hover {
-    background-color: #f4f4f4; /* 滑鼠移上去變色 */
-    transform: translateX(5px); /* 滑鼠移上去往右移一點點 */
+    background-color: #f4f4f4; 
+    transform: translateX(5px); 
 }
 
-/* --- 「回到頂部」按鈕樣式 (強力修復版) --- */
+
+/* --- 8. 「回到頂部」按鈕 (修復版) --- */
 
 #back-to-top-btn {
     display: block;
     position: fixed; /* 100% 固定在螢幕上 */
     bottom: 30px;    /* 離底部 30px */
-    right: 30px;     /* 離右邊 30px (修復偏左問題) */
-    z-index: 100;    /* 確保在最上層 */
+    right: 30px;     /* 離右邊 30px */
+    z-index: 100;    
     
     width: 50px;           
     height: 50px;          
@@ -197,20 +182,19 @@ html {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     position: relative; /* 為了定位箭頭 */
     
-    /* 我們讓它永遠顯示，不再隱藏 */
-    opacity: 1; 
+    opacity: 1; /* 永遠顯示 */
     visibility: visible;
     
-    transition: all 0.3s ease; /* 保留 hover 動畫 */
+    transition: all 0.3s ease; 
 }
 
 /* 滑鼠移上去的樣式 */
 #back-to-top-btn:hover {
     background-color: #3f5870;
-    transform: translateY(-3px); /* 往上浮一點 (這個不會壞事) */
+    transform: translateY(-3px); /* 往上浮一點 */
 }
 
-/* 畫箭頭 (這段不變) */
+/* 畫箭頭 */
 #back-to-top-btn::before {
     content: ''; 
     position: absolute; 
