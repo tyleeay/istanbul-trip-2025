@@ -72,5 +72,26 @@
 
     <a href="#" id="back-to-top-btn"></a>
 
+    <script>
+        // 1. 抓到我們那個「回到頂部」的按鈕
+        var topButton = document.getElementById("back-to-top-btn");
+
+        // 2. 監聽整個視窗的「滾動」事件
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            // 3. 檢查滾動的距離
+            //    如果滾動超過 200px (您可以隨意改這個數字)
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                // 就幫按鈕「加上」一個 'show' 的 class
+                topButton.classList.add("show-btn");
+            } else {
+                // 否則，就「移除」那個 'show' class
+                topButton.classList.remove("show-btn");
+            }
+        }
+    </script>
 </body>
 </html>
