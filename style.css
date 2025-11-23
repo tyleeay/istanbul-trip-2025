@@ -51,7 +51,7 @@ body {
 
     /* --- 以下是您專屬的背景圖 --- */
     /* 我們加上 40% 的「黑色」濾鏡，並使用您上傳的 'istanbul-bg.jpg' */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.png');
 
     background-size: cover; /* 填滿 */
     background-position: center; /* 圖片置中 (這張圖置中超好看) */
