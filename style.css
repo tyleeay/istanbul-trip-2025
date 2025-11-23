@@ -116,45 +116,102 @@ html {
     padding-bottom: 0.5rem;
 }
 
+/* --- 6. 航班資訊 (v1.4 登機證樣式) --- */
 .flight-info {
     margin-bottom: 3rem;
     display: grid; 
-    grid-template-columns: 1fr; 
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* 手機上 1 欄 */
+    gap: 2rem; /* 加大卡片間距 */
 }
 
+/* 電腦版 (寬度大於 768px 時) */
 @media (min-width: 768px) {
     .flight-info {
-        grid-template-columns: 1fr 1fr; 
+        grid-template-columns: 1fr 1fr; /* 變成 2 欄 */
     }
 }
 
+/* 登機證卡片 */
 .flight-card {
     background-color: #ffffff; 
     border: 1px solid #e0e0e0; 
-    border-radius: 8px; 
-    padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03); 
+    border-radius: 12px; /* 圓角大一點 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); 
+
+    display: flex; /* 關鍵：讓票根和主體並排 */
+    overflow: hidden; /* 確保圓角切割生效 */
+    padding: 0; /* 拿掉舊的 padding */
 }
 
-.flight-card h4 {
-    font-size: 1.2rem;
+/* 左邊票根 */
+.ticket-stub {
+    flex-basis: 100px; /* 票根固定 100px 寬 */
+    flex-shrink: 0; /* 票根不壓縮 */
+    background-color: #f8f8f8; /* 票根用淺灰色底 */
+    border-right: 2px dashed #d0d0d0; /* 關鍵：登機證虛線 */
+
+    display: flex;
+    flex-direction: column; /* 內容垂直排列 */
+    justify-content: center; /* 垂直置中 */
+    align-items: center; /* 水平置中 */
+    padding: 1.5rem 0.5rem;
+}
+
+.ticket-stub .airline {
+    font-size: 1.5rem;
     color: #2c3e50;
-    margin-bottom: 1rem;
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: 0.5rem;
+    font-weight: 600; /* 用數字 600 (半粗體)，避免手寫字太粗 */
 }
 
-.flight-card p {
+.ticket-stub .date {
     font-size: 1rem;
-    line-height: 1.7; 
-    margin-bottom: 0.5rem;
+    color: #555;
+    margin-top: 0.25rem;
 }
 
-.flight-card p strong {
-    display: inline-block;
-    width: 100px; 
-    color: #555;
+.ticket-stub .gate {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* 右邊主體 */
+.ticket-main {
+    flex-grow: 1; /* 佔滿剩下空間 */
+    padding: 1.5rem 1.8rem;
+}
+
+/* (替換舊的 h4) */
+.ticket-main h4 {
+    font-size: 1.1rem;
+    color: #777;
+    margin: 0 0 0.5rem 0;
+    border: none; /* 拿掉舊的底線 */
+    padding: 0;
+}
+
+/* (替換舊的 p) */
+.ticket-main .route {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.ticket-main .time {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.ticket-main .details {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.ticket-main p strong {
+    color: #333;
 }
 
 .daily-schedule {
