@@ -197,3 +197,25 @@ html {
     /* 關鍵：加入這行，才能定位我們畫的箭頭 */
     position: relative; 
 }
+
+/* --- 這是用 CSS 畫的箭頭 --- */
+#back-to-top-btn::before {
+    content: ''; /* 這是 CSS 畫圖的起手式 */
+    position: absolute; /* 讓箭頭浮在按鈕中間 */
+
+    /* 定位到按鈕的正中央 */
+    top: 50%;
+    left: 50%;
+
+    /* --- 畫箭頭的魔法 --- */
+    border: solid white; /* 箭頭是白色的 */
+    border-width: 0 4px 4px 0; /* 箭頭的粗細 (4px) */
+    display: inline-block;
+    padding: 5px; /* 箭頭的大小 (5px) */
+
+    /* 關鍵：
+       1. 旋轉 -135 度 (把 "L" 形狀轉成箭頭)
+       2. 往上和往左平移，讓它完美置中
+    */
+    transform: translate(-50%, -75%) rotate(-135deg);
+}
