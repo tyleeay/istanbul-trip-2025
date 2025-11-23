@@ -1,50 +1,66 @@
-/* 基礎重設，並設定「文青風」的預設字體和背景 */
-body, h1, p, ul {
+/* 步驟 1：在這裡定義您的「私房字體」
+   我們幫這個字體取一個 CSS 內部才知道的名字，叫做 'TanukiMarker'
+*/
+@font-face {
+    font-family: 'TanukiMarker'; /* 這是我們在 CSS 裡要用的名字 */
+    src: url('tanuki_permanent_marker.ttf') format('truetype'); /* ↑↑↑ 關鍵！請確認這個檔名
+            和您上傳到 GitHub 的「一模一樣」！
+         */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 步驟 2：將 'TanukiMarker' 應用到所有元素 
+*/
+body, h1, p, ul, a {
     margin: 0;
     padding: 0;
-    /* 預設字體使用 Montserrat */
-    font-family: 'Montserrat', sans-serif;
+    /* 全面替換！
+       瀏覽器會先試著用 'TanukiMarker'，
+       如果失敗了（例如檔名打錯），它會退一步用 sans-serif (系統預設的無襯線體)
+    */
+    font-family: 'TanukiMarker', sans-serif;
 }
 
 body {
-    background-color: #fdfdfd; /* 柔和的米白色背景 */
-    color: #333; /* 基本文字顏色 */
+    background-color: #fdfdfd; 
+    color: #333;
 }
 
 /* 導覽列的樣式 */
 .navbar {
     display: flex;
     list-style: none;
-    background-color: #2c3e50; /* 更有質感的「深石板灰」 */
-    padding: 1.2rem; /* 讓導覽列高一點 */
+    background-color: #2c3e50; 
+    padding: 1.2rem; 
     justify-content: center;
-    gap: 2rem; /* 選項間距拉開 */
+    gap: 2rem;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    font-weight: 400; /* 不用粗體，更秀氣 */
-    font-size: 0.9rem;
-    letter-spacing: 0.5px; /* 微微增加字距 */
+    font-size: 1rem; /* marker 字體通常比較花俏，稍微放大一點 */
+    letter-spacing: 0.5px; 
 }
 
 /* 標題區域的樣式 */
 .hero {
     text-align: center;
-    padding: 5rem 1rem; /* 上下留白拉到最開 */
+    padding: 5rem 1rem; 
 }
 
 .hero h1 {
-    /* 指定使用我們下載的 Playfair Display 標題字體 */
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem; /* 標題加大，更有氣勢 */
-    color: #2c3e50; /* 標題顏色呼應導覽列 */
+    /* 我們不再需要指定 Playfair Display 了，
+       它會自動繼承 body 的 'TanukiMarker' 字體
+    */
+    font-size: 3.5rem; 
+    color: #2c3e50; 
     margin-bottom: 1rem;
 }
 
 .hero .date {
-    font-size: 1.1rem;
-    color: #7f8c8d; /* 日期顏色不變，保持低調 */
-    font-style: italic; /* 讓日期有點斜體，更雅緻 */
+    font-size: 1.25rem; /* 稍微放大日期 */
+    color: #7f8c8d;
+    font-style: normal; /* 把之前的斜體拿掉，讓字體本身發揮 */
 }
