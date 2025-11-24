@@ -1,4 +1,4 @@
-/* --- 這是「完整版」的 style.css (v5.0 - 對齊修復版) --- */
+/* --- 這是「完整版」的 style.css (v6.0 - 殭屍修復版) --- */
 
 /* 1. 字體定義 */
 @font-face {
@@ -350,18 +350,17 @@ body {
 
 .hotel-card p {
     font-size: 1rem;
-    color: var(--color-text-dark); /* v4.9 修正 */
+    color: var(--color-text-dark); 
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
 
-/* ↓↓↓ v5.0 對齊修復：使用 .hotel-label ↓↓↓ */
+/* ↓↓↓ v6.0 對齊修復：使用 .hotel-label (加寬) ↓↓↓ */
 .hotel-label {
     color: var(--color-text-dark);
     display: inline-block;
-    width: 100px;
+    width: 110px; /* 從 100px 增加到 110px */
 }
-/* (舊的 .hotel-card p strong 已被移除) */
 
 
 /* --- v4.8/v5.0 可點擊的地址URL樣式 --- */
@@ -395,7 +394,7 @@ body {
     padding: 0 !important;
     
     font-size: 1rem;
-    color: var(--color-text-dark); /* v4.9 修正 */
+    color: var(--color-text-dark); 
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
