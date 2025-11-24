@@ -1,4 +1,4 @@
-/* --- 這是「完整版」的 style.css (v6.0 - 殭屍修復版) --- */
+/* --- 這是「完整版」的 style.css (v7.0 - Flexbox 終極修復) --- */
 
 /* 1. 字體定義 */
 @font-face {
@@ -334,7 +334,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* --- 10. 住宿卡片樣式 --- */
+/* --- 10. 住宿卡片樣式 (v7.0) --- */
 .hotel-card {
     background-color: var(--color-stub-bg); 
     border: 1px solid var(--color-border);
@@ -346,38 +346,36 @@ body {
 
 .hotel-card h4 {
     margin-top: 0;
+    /* (樣式繼承自 .content-wrapper h4) */
 }
 
-.hotel-card p {
+/* ↓↓↓ v7.0 全新 Flexbox 對齊系統 ↓↓↓ */
+.info-row {
+    display: flex; /* 啟用 Flexbox */
     font-size: 1rem;
     color: var(--color-text-dark); 
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
 
-/* ↓↓↓ v6.0 對齊修復：使用 .hotel-label (加寬) ↓↓↓ */
-.hotel-label {
+.info-label {
+    flex-basis: 110px; /* 標籤固定 110px 寬 */
+    flex-shrink: 0; /* 標籤永不壓縮 */
     color: var(--color-text-dark);
-    display: inline-block;
-    width: 110px; /* 從 100px 增加到 110px */
 }
 
+.info-value {
+    flex-grow: 1; /* 內容自動填滿剩餘空間 */
+    color: var(--color-text-dark);
+}
+/* ↑↑↑ v7.0 對齊系統結束 ↑↑↑ */
 
-/* --- v4.8/v5.0 可點擊的地址URL樣式 --- */
+
+/* ↓↓↓ v7.0 乾淨版的連結樣式 (移除了 !important) ↓↓↓ */
 .hotel-address-url {
-    /* 強制重置 */
-    display: inline !important; 
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    
-    /* v4.9 修正 */
     color: var(--color-text-dark); 
     text-decoration: none; 
     transition: all 0.2s ease;
-    
-    /* v5.0 修正：明確指定 font-size */
     font-size: 1rem;
 }
 
@@ -385,16 +383,7 @@ body {
     color: #007BFF; /* 懸停變藍 */
     text-decoration: underline; /* 懸停加底線 */
 }
+/* ↑↑↑ v7.0 連結樣式結束 ↑↑↑ */
 
 
-/* --- 11. 修正訂房代號樣式 --- */
-.booking-id-text {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    
-    font-size: 1rem;
-    color: var(--color-text-dark); 
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-}
+/* --- 11. (v7.0) 已移除 .booking-id-text (不再需要) --- */
