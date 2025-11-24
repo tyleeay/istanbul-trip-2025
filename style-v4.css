@@ -39,7 +39,9 @@ body {
     padding-top: 5rem;
 }
 
+/* 修改後 */
 html {
+    font-size: var(--base-font-size); /* <-- 加入這行來套用變數 */
     scroll-behavior: smooth;
 }
 
