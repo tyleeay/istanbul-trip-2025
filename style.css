@@ -381,3 +381,22 @@ html {
 .map-link:hover {
     background-color: #3f5870;
 }
+
+/* --- 10. (v1.9) 修正訂房代號樣式 --- */
+
+/* 這條新規則會強制「訂房代號」那一行
+   恢復成普通的文字樣式，
+   !important 是我們的「王牌」，
+   可以覆蓋掉那個幽靈 bug 
+*/
+.booking-id-text {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+
+    /* 重新套用 <p> 的預設樣式 */
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
