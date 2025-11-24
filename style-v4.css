@@ -366,37 +366,22 @@ html {
     width: 100px;
 }
 
-/* --- ↓↓↓ v4.2 新增：可點擊的地址行樣式 ↓↓↓ --- */
-.hotel-address-link {
-    /* 1. 讓它看起來像 <p> 標籤 (佔滿一行) */
-    display: block; 
-    font-size: 1rem;
-    color: var(--color-text-light);
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
+/* --- ↓↓↓ v4.3 新增：可點擊的地址URL樣式 ↓↓↓ --- */
+.hotel-address-url {
+    color: var(--color-text-light); /* 繼承段落的顏色 */
+    text-decoration: none; /* 移除底線 (您的手寫字體可能不需要) */
+    transition: color 0.2s ease;
 
-    /* 2. 讓它有連結的樣子 */
-    text-decoration: none; /* 移除底線 */
-    border-radius: 4px;
-    padding: 0.2rem 0.4rem; /* 加上一點內距，讓 hover 效果好看 */
-    margin-left: -0.4rem; /* 抵銷 padding 造成的位移 */
-    transition: all 0.2s ease-out;
+    /* 加上一個微妙的虛線底線，提示它可以點擊 */
+    border-bottom: 1px dashed var(--color-border);
 }
 
-/* 3. 讓它裡面的 <strong> 繼承樣式 */
-.hotel-address-link strong {
-    color: var(--color-text-dark);
-    display: inline-block;
-    width: 100px;
+/* 當滑鼠移上去時 */
+.hotel-address-url:hover {
+    color: var(--color-primary); /* 換成主題棕色 */
+    border-bottom-color: var(--color-primary); /* 虛線也變色 */
 }
-
-/* 4. 滑鼠移上去的 hover 效果 */
-.hotel-address-link:hover {
-    background-color: var(--color-stub-bg); /* 用票根的淺色 */
-    color: var(--color-primary); /* 讓文字變成主題棕色 */
-    transform: translateX(4px); /* 稍微往右移 */
-}
-/* --- ↑↑↑ v4.2 新樣式結束 ↑↑↑ --- */
+/* --- ↑↑↑ v4.3 新樣式結束 ↑↑↑ --- */
 
 /* --- 11. (v2.1) 修正訂房代號樣式 --- */
 .booking-id-text {
