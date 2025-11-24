@@ -1,53 +1,49 @@
-/* --- 這是「完整版」的 style.css (v1.8) --- */
+/* --- 這是「完整版」的 style.css (v2.0) --- */
 
-/* 1. 字體定義 */
-@font-face {
-    font-family: 'TanukiMarker'; 
-    src: url('tanuki_permanent_marker.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+/* 1. CSS 變數 (v2.0) */
+:root {
+    /* ↓↓↓ 這裡是您的「字體控制中心」！ ↓↓↓
+      未來您想換字體，只要改這一行就好
+    */
+    --main-font: 'Ma Shan Zheng', sans-serif;
 }
 
-/* 2. 基礎設定 (包含字體) */
+
+/* 2. 基礎設定 (已套用變數) */
 body, h1, p, ul, a {
     margin: 0;
     padding: 0;
-    font-family: 'TanukiMarker', sans-serif;
+    font-family: var(--main-font); /* 套用變數 */
 }
 
 body {
     background-color: #fdfdfd; 
     color: #333;
-    /* (v1.2) 因為導覽列是 fixed，我們必須把頁面往下推 */
     padding-top: 5rem;
 }
 
-/* 讓錨點連結點擊時，有「平滑滾動」的動畫效果 */
 html {
     scroll-behavior: smooth;
 }
 
-/* 3. 導覽列 (v1.3 終極版！) */
+/* 3. 導覽列 */
 .navbar {
     display: flex;
     list-style: none;
     padding: 1.2rem; 
-    justify-content: center; /* 置中 */
+    justify-content: center; 
     gap: 2rem;
     
-    /* --- Fixed & Glass Effect --- */
-    background-color: rgba(44, 62, 80, 0.8); /* 80% 透明度 */
+    background-color: rgba(44, 62, 80, 0.8); 
     position: fixed;
     top: 0;
     left: 0; 
-    width: 100%; /* 100% 寬 */
+    width: 100%; 
     z-index: 1000; 
-
-    /* (v1.3) 關鍵修復！防止寬度溢出 */
     box-sizing: border-box;
 
-    -webkit-backdrop-filter: blur(10px); /* 支援 Safari */
-    backdrop-filter: blur(10px); /* 標準語法 */
+    -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px); 
 }
 
 .navbar a {
@@ -61,14 +57,14 @@ html {
 .hero {
     text-align: center;
     padding: 8rem 1rem; 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.jpg');
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
 }
 
 .hero h1 {
-    font-family: 'TanukiMarker', sans-serif;
+    font-family: var(--main-font); /* 套用變數 */
     font-size: 3.5rem; 
     color: #FFFFFF; 
     margin-bottom: 1rem;
@@ -90,7 +86,7 @@ html {
 }
 
 .content-block h2 {
-    font-family: 'TanukiMarker', sans-serif;
+    font-family: var(--main-font); /* 套用變數 */
     font-size: 2.5rem; 
     color: #2c3e50; 
     text-align: center;
@@ -98,7 +94,7 @@ html {
 }
 
 .content-block h3 {
-    font-family: 'TanukiMarker', sans-serif;
+    font-family: var(--main-font); /* 套用變數 */
     font-size: 1.8rem;
     color: #333;
     margin-bottom: 1.5rem;
@@ -106,22 +102,20 @@ html {
     padding-bottom: 0.5rem;
 }
 
-/* 6. 航班資訊 (v1.5 登機證樣式 + 字體修正) */
+/* 6. 航班資訊 */
 .flight-info {
     margin-bottom: 3rem;
     display: grid; 
-    grid-template-columns: 1fr; /* 手機上 1 欄 */
-    gap: 2rem; /* 加大卡片間距 */
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
 }
 
-/* 電腦版 (寬度大於 768px 時) */
 @media (min-width: 768px) {
     .flight-info {
-        grid-template-columns: 1fr 1fr; /* 變成 2 欄 */
+        grid-template-columns: 1fr 1fr; 
     }
 }
 
-/* 登機證卡片 */
 .flight-card {
     background-color: #ffffff; 
     border: 1px solid #e0e0e0; 
@@ -132,7 +126,6 @@ html {
     padding: 0; 
 }
 
-/* 左邊票根 */
 .ticket-stub {
     flex-basis: 100px; 
     flex-shrink: 0; 
@@ -163,7 +156,6 @@ html {
     margin-top: 0.5rem;
 }
 
-/* 右邊主體 */
 .ticket-main {
     flex-grow: 1; 
     padding: 1.5rem 1.8rem;
@@ -178,7 +170,7 @@ html {
 }
 
 .ticket-main .route {
-    font-size: 1.3rem; /* v1.5 修正：防止換行 */
+    font-size: 1.3rem; 
     color: #2c3e50;
     font-weight: 600;
     margin-bottom: 0.75rem;
@@ -216,7 +208,6 @@ html {
     padding-left: 0;
 }
 
-/* 尚未製作的按鈕 (e.g. Day 2, 3...) */
 .day-links li a {
     display: block;
     padding: 1.2rem 1rem;
@@ -237,7 +228,6 @@ html {
 
 /* --- 8. 「逐日行程」展開/收合的樣式 --- */
 
-/* 「天數按鈕」的樣式 (Day 1) */
 .day-toggle-btn {
     display: block;
     width: 100%;
@@ -259,7 +249,6 @@ html {
     transform: translateX(5px); 
 }
 
-/* 幫按鈕加上「箭頭」圖示 (用 CSS 畫) */
 .day-toggle-btn::after {
     content: '';
     display: inline-block;
@@ -272,12 +261,10 @@ html {
     transition: transform 0.3s ease;
 }
 
-/* 當按鈕被點擊 (active) 時，讓箭頭「轉上去」 */
 .day-toggle-btn.active::after {
     transform: rotate(-135deg); 
 }
 
-/* 隱藏的「內容區塊」 */
 .day-content {
     background-color: #ffffff;
     border: 1px solid #eee;
@@ -290,18 +277,15 @@ html {
     transition: max-height 0.5s ease-out; 
 }
 
-/* 內容的「包裝」 (為了留白) */
 .content-wrapper {
     padding: 1.5rem 1.5rem;
 }
 
-/* 當內容區塊被點擊 (active) 時，把它展開 */
 .day-content.active {
     max-height: 1000px; 
     transition: max-height 0.8s ease-in; 
 }
 
-/* 內容區塊裡的標題 (H4) */
 .content-wrapper h4 {
     font-size: 1.2rem;
     color: #2c3e50;
@@ -312,14 +296,12 @@ html {
     margin-top: 0;
 }
 
-/* 內容區塊裡的清單 (ul) */
 .content-wrapper ul {
     list-style: none; 
     padding-left: 0;
     margin-bottom: 1rem;
 }
 
-/* 內容區塊裡的清單項目 (li) */
 .content-wrapper li {
     font-size: 1rem;
     line-height: 1.6;
@@ -328,7 +310,6 @@ html {
     position: relative;
 }
 
-/* 用 CSS 畫出「文青風」的小圓點 */
 .content-wrapper li::before {
     content: '•';
     position: absolute;
@@ -340,7 +321,7 @@ html {
 
 /* --- 9. 住宿卡片樣式 (v1.7) --- */
 .hotel-card {
-    background-color: #fcfcfc; /* 一個非常淺的底色 */
+    background-color: #fcfcfc; 
     border: 1px solid #eee;
     border-radius: 8px;
     padding: 1.2rem 1.5rem;
@@ -365,10 +346,9 @@ html {
     width: 100px;
 }
 
-/* 地圖連結按鈕 */
 .map-link {
     display: inline-block;
-    background-color: #2c3e50; /* 呼應主題色 */
+    background-color: #2c3e50; 
     color: white;
     padding: 0.6rem 1rem;
     border-radius: 5px;
@@ -382,18 +362,12 @@ html {
     background-color: #3f5870;
 }
 
-/* --- 10. (v1.9) 修正訂房代號樣式 --- */
-
-/* 這條新規則會強制「訂房代號」那一行
-   恢復成普通的文字樣式，
-   !important 是我們的「王牌」，
-   可以覆蓋掉那個幽靈 bug 
-*/
+/* --- 10. (v2.0) 修正訂房代號樣式 --- */
 .booking-id-text {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
-
+    
     /* 重新套用 <p> 的預設樣式 */
     font-size: 1rem;
     color: #555;
