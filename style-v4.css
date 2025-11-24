@@ -353,7 +353,7 @@ body {
 
 .hotel-card p {
     font-size: 1rem;
-    color: var(--color-text-light);
+    color: var(--color-text-dark); /* <-- 修正！統一成深棕色 */
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
@@ -374,7 +374,7 @@ body {
     margin: 0 !important;
 
     /* 2. v4.8 樣式 (平時：和內文相同) */
-    color: var(--color-text-light); /* 繼承內文的淺棕色 */
+    color: var(--color-text-dark); /* <-- 修正！統一成深棕色 */
     text-decoration: none; /* 平時沒有底線 */
 
     transition: all 0.2s ease;
