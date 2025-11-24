@@ -364,28 +364,28 @@ body {
     width: 100px;
 }
 
-/* --- v4.5 終極修復：可點擊的地址URL樣式 --- */
+/* --- ↓↓↓ v4.6 更新：可點擊的地址URL樣式 ↓↓↓ --- */
 .hotel-address-url {
-    /* 1. 強制重置 (Bulldozer Fix) */
-    display: inline !important; /* 強制它在同一行 */
+    /* 1. 強制重置 (Bulldozer Fix) - (保留) */
+    display: inline !important; 
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    
-    /* 2. 想要的樣式 */
-    color: var(--color-text-light); 
-    text-decoration: none; 
+
+    /* 2. v4.6 想要的樣式 */
+    color: var(--color-primary); /* 讓它總是主題棕色 */
+    text-decoration: underline; /* 加上底線 */
+    font-weight: 600; /* 讓它稍微粗一點，更顯眼 */
+
     transition: color 0.2s ease;
-    
-    /* 加上一個微妙的虛線底線 */
-    border-bottom: 1px dashed var(--color-border);
 }
 
+/* 3. v4.6 Hover 效果 */
 .hotel-address-url:hover {
-    color: var(--color-primary); 
-    border-bottom-color: var(--color-primary);
+    color: #A97C50; /* 滑鼠移上去時，變成淺一點的棕色 */
 }
+/* --- ↑↑↑ v4.6 新樣式結束 ↑↑↑ --- */
 
 
 /* --- 11. 修正訂房代號樣式 --- */
