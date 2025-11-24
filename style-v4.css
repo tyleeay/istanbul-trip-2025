@@ -1,4 +1,4 @@
-/* --- 這是「完整版」的 style.css (v4.0 - 暖色調) --- */
+/* --- 這是「完整版」的 style.css (v4.4 - 終極同步版) --- */
 
 /* 1. 字體定義 (來自您 v3 的檔案) */
 @font-face {
@@ -11,22 +11,27 @@
 /* 2. CSS 變數 */
 :root {
     --main-font: 'MyCustomFont', sans-serif;
-
-    /* ↓↓↓ 全新！您的「字體大小控制中心」 ↓↓↓ */
-    --base-font-size: 120.5%; /* 100% = 16px. 這是 18px */
     
-    /* ↓↓↓ v4.0 全新色調 ↓↓↓ */
-    --color-primary: #8B5A2B; /* 溫暖的赤陶棕 (取代 #2c3e50) */
-    --color-text-dark: #4A3F35; /* 深咖啡色 (取代 #333) */
-    --color-text-light: #6D5F53; /* 淺咖啡色 (取代 #555 / #666) */
-    --color-bg: #FAF3E0; /* 溫暖的米色背景 (取代 #fdfdfd) */
-    --color-card: #FFFCF5; /* 奶油白卡片 (取代 #ffffff) */
-    --color-border: #EAE0C8; /* 淺棕色邊框 (取代 #eee) */
-    --color-stub-bg: #F5EFE3; /* 票根背景 (取代 #f8f8f8) */
+    /* v4.1 字體大小控制中心 */
+    --base-font-size: 112.5%; /* 100% = 16px. 這是 18px */
+    
+    /* v4.0 色調 */
+    --color-primary: #8B5A2B; /* 溫暖的赤陶棕 */
+    --color-text-dark: #4A3F35; /* 深咖啡色 */
+    --color-text-light: #6D5F53; /* 淺咖啡色 */
+    --color-bg: #FAF3E0; /* 溫暖的米色背景 */
+    --color-card: #FFFCF5; /* 奶油白卡片 */
+    --color-border: #EAE0C8; /* 淺棕色邊框 */
+    --color-stub-bg: #F5EFE3; /* 票根背景 */
 }
 
 
-/* 3. 基礎設定 (已套用變數) */
+/* 3. 基礎設定 */
+html {
+    font-size: var(--base-font-size); /* <-- 套用字體大小變數 */
+    scroll-behavior: smooth;
+}
+
 body, h1, p, ul, a {
     margin: 0;
     padding: 0;
@@ -39,12 +44,6 @@ body {
     padding-top: 5rem;
 }
 
-/* 修改後 */
-html {
-    font-size: var(--base-font-size); /* <-- 加入這行來套用變數 */
-    scroll-behavior: smooth;
-}
-
 /* 4. 導覽列 */
 .navbar {
     display: flex;
@@ -53,7 +52,6 @@ html {
     justify-content: center; 
     gap: 2rem;
     
-    /* (139, 90, 43) 是 --color-primary 的 RGB 值 */
     background-color: rgba(139, 90, 43, 0.8); 
     position: fixed;
     top: 0;
@@ -73,7 +71,7 @@ html {
     letter-spacing: 0.5px; 
 }
 
-/* 5. 封面 (Hero) (來自您 v3 的檔案) */
+/* 5. 封面 (Hero) */
 .hero {
     text-align: center;
     padding: 8rem 1rem; 
@@ -150,7 +148,7 @@ html {
     flex-basis: 100px; 
     flex-shrink: 0; 
     background-color: var(--color-stub-bg); 
-    border-right: 2px dashed #DCD0B3; /* 搭配邊框的虛線 */
+    border-right: 2px dashed #DCD0B3; 
     display: flex;
     flex-direction: column; 
     justify-content: center; 
@@ -183,7 +181,7 @@ html {
 
 .ticket-main h4 {
     font-size: 1.1rem;
-    color: #999; /* 保持淺灰色 */
+    color: #999; 
     margin: 0 0 0.5rem 0;
     border: none; 
     padding: 0;
@@ -339,7 +337,7 @@ html {
     font-size: 1.2rem;
 }
 
-/* --- 10. 住宿卡片樣式 (v1.7) --- */
+/* --- 10. 住宿卡片樣式 --- */
 .hotel-card {
     background-color: var(--color-stub-bg); 
     border: 1px solid var(--color-border);
@@ -366,22 +364,22 @@ html {
     width: 100px;
 }
 
-/* --- ↓↓↓ v4.3 新增：可點擊的地址URL樣式 ↓↓↓ --- */
+/* ↓↓↓ v4.3 正確的「虛線連結」樣式 ↓↓↓ */
 .hotel-address-url {
     color: var(--color-text-light); /* 繼承段落的顏色 */
     text-decoration: none; /* 移除底線 (您的手寫字體可能不需要) */
     transition: color 0.2s ease;
-
+    
     /* 加上一個微妙的虛線底線，提示它可以點擊 */
     border-bottom: 1px dashed var(--color-border);
 }
 
-/* 當滑鼠移上去時 */
 .hotel-address-url:hover {
     color: var(--color-primary); /* 換成主題棕色 */
     border-bottom-color: var(--color-primary); /* 虛線也變色 */
 }
-/* --- ↑↑↑ v4.3 新樣式結束 ↑↑↑ --- */
+/* ↑↑↑ v4.3 樣式結束 ↑↑↑ */
+
 
 /* --- 11. (v2.1) 修正訂房代號樣式 --- */
 .booking-id-text {
