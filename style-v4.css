@@ -13,7 +13,7 @@
     --main-font: 'MyCustomFont', sans-serif;
 
     /* ↓↓↓ 全新！您的「字體大小控制中心」 ↓↓↓ */
-    --base-font-size: 112.5%; /* 100% = 16px. 這是 18px */
+    --base-font-size: 120.5%; /* 100% = 16px. 這是 18px */
     
     /* ↓↓↓ v4.0 全新色調 ↓↓↓ */
     --color-primary: #8B5A2B; /* 溫暖的赤陶棕 (取代 #2c3e50) */
