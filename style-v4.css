@@ -366,21 +366,37 @@ html {
     width: 100px;
 }
 
-.map-link {
-    display: inline-block;
-    background-color: var(--color-primary); 
-    color: white;
-    padding: 0.6rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease;
+/* --- ↓↓↓ v4.2 新增：可點擊的地址行樣式 ↓↓↓ --- */
+.hotel-address-link {
+    /* 1. 讓它看起來像 <p> 標籤 (佔滿一行) */
+    display: block; 
+    font-size: 1rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+
+    /* 2. 讓它有連結的樣子 */
+    text-decoration: none; /* 移除底線 */
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem; /* 加上一點內距，讓 hover 效果好看 */
+    margin-left: -0.4rem; /* 抵銷 padding 造成的位移 */
+    transition: all 0.2s ease-out;
 }
 
-.map-link:hover {
-    background-color: #A97C50; /* 變淺的棕色 */
+/* 3. 讓它裡面的 <strong> 繼承樣式 */
+.hotel-address-link strong {
+    color: var(--color-text-dark);
+    display: inline-block;
+    width: 100px;
 }
+
+/* 4. 滑鼠移上去的 hover 效果 */
+.hotel-address-link:hover {
+    background-color: var(--color-stub-bg); /* 用票根的淺色 */
+    color: var(--color-primary); /* 讓文字變成主題棕色 */
+    transform: translateX(4px); /* 稍微往右移 */
+}
+/* --- ↑↑↑ v4.2 新樣式結束 ↑↑↑ --- */
 
 /* --- 11. (v2.1) 修正訂房代號樣式 --- */
 .booking-id-text {
