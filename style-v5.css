@@ -1,6 +1,6 @@
-/* --- 這是「完整版」的 style.css (v4.5 - 終極同步版) --- */
+/* --- 這是「完整版」的 style.css (v5.0 - 對齊修復版) --- */
 
-/* 1. 字體定義 (來自您 v3 的檔案) */
+/* 1. 字體定義 */
 @font-face {
     font-family: 'MyCustomFont';
     src: url('jason-handwritting-3.ttf') format('truetype');
@@ -11,24 +11,21 @@
 /* 2. CSS 變數 */
 :root {
     --main-font: 'MyCustomFont', sans-serif;
+    --base-font-size: 112.5%; /* 18px */
     
-    /* v4.1 字體大小控制中心 */
-    --base-font-size: 112.5%; /* 100% = 16px. 這是 18px */
-    
-    /* v4.0 色調 */
-    --color-primary: #8B5A2B; /* 溫暖的赤陶棕 */
-    --color-text-dark: #4A3F35; /* 深咖啡色 */
-    --color-text-light: #6D5F53; /* 淺咖啡色 */
-    --color-bg: #FAF3E0; /* 溫暖的米色背景 */
-    --color-card: #FFFCF5; /* 奶油白卡片 */
-    --color-border: #EAE0C8; /* 淺棕色邊框 */
-    --color-stub-bg: #F5EFE3; /* 票根背景 */
+    --color-primary: #8B5A2B; 
+    --color-text-dark: #4A3F35; 
+    --color-text-light: #6D5F53; 
+    --color-bg: #FAF3E0; 
+    --color-card: #FFFCF5; 
+    --color-border: #EAE0C8; 
+    --color-stub-bg: #F5EFE3; 
 }
 
 
 /* 3. 基礎設定 */
 html {
-    font-size: var(--base-font-size); /* <-- 套用字體大小變數 */
+    font-size: var(--base-font-size); 
     scroll-behavior: smooth;
 }
 
@@ -353,39 +350,43 @@ body {
 
 .hotel-card p {
     font-size: 1rem;
-    color: var(--color-text-dark); /* <-- 修正！統一成深棕色 */
+    color: var(--color-text-dark); /* v4.9 修正 */
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
 
-.hotel-card p strong {
+/* ↓↓↓ v5.0 對齊修復：使用 .hotel-label ↓↓↓ */
+.hotel-label {
     color: var(--color-text-dark);
     display: inline-block;
     width: 100px;
 }
+/* (舊的 .hotel-card p strong 已被移除) */
 
-/* --- ↓↓↓ v4.8 新增：懸停變藍 樣式 ↓↓↓ --- */
+
+/* --- v4.8/v5.0 可點擊的地址URL樣式 --- */
 .hotel-address-url {
-    /* 1. 強制重置 (保留 v4.5 的) */
+    /* 強制重置 */
     display: inline !important; 
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
-
-    /* 2. v4.8 樣式 (平時：和內文相同) */
-    color: var(--color-text-dark); /* <-- 修正！統一成深棕色 */
-    text-decoration: none; /* 平時沒有底線 */
-
+    
+    /* v4.9 修正 */
+    color: var(--color-text-dark); 
+    text-decoration: none; 
     transition: all 0.2s ease;
+    
+    /* v5.0 修正：明確指定 font-size */
+    font-size: 1rem;
 }
 
-/* 3. v4.8 Hover 效果 (懸停時) */
 .hotel-address-url:hover {
-    color: #007BFF; /* 變成藍色 */
-    text-decoration: underline; /* 加上底線 */
+    color: #007BFF; /* 懸停變藍 */
+    text-decoration: underline; /* 懸停加底線 */
 }
-/* --- ↑↑↑ v4.8 新樣式結束 ↑↑↑ --- */
+
 
 /* --- 11. 修正訂房代號樣式 --- */
 .booking-id-text {
@@ -394,7 +395,7 @@ body {
     padding: 0 !important;
     
     font-size: 1rem;
-    color: var(--color-text-light);
+    color: var(--color-text-dark); /* v4.9 修正 */
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
