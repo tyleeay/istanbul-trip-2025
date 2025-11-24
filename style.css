@@ -1,15 +1,28 @@
-/* --- 這是「完整版」的 style.css (v2.0) --- */
+/* --- 這是「完整版」的 style.css (v2.1) --- */
 
-/* 1. CSS 變數 (v2.0) */
-:root {
-    /* ↓↓↓ 這裡是您的「字體控制中心」！ ↓↓↓
-      未來您想換字體，只要改這一行就好
+/* 1. 字體定義 (v2.1) */
+@font-face {
+    font-family: 'MyCustomFont'; /* 我們給它一個通用名字 */
+    
+    /* 它指向您上傳的 tanuki_permanent_marker.ttf 
+      未來您上傳新字體 (e.g. new-font.otf)，
+      只需要改下面這一行
     */
-    --main-font: 'Ma Shan Zheng', sans-serif;
+    src: url('tanuki_permanent_marker.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. CSS 變數 (v2.1) */
+:root {
+    /* 這裡是您的「字體控制中心」！ 
+      我們把 --main-font 指向上面 @font-face 定義的 'MyCustomFont'
+    */
+    --main-font: 'MyCustomFont', sans-serif;
 }
 
 
-/* 2. 基礎設定 (已套用變數) */
+/* 3. 基礎設定 (已套用變數) */
 body, h1, p, ul, a {
     margin: 0;
     padding: 0;
@@ -26,7 +39,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 3. 導覽列 */
+/* 4. 導覽列 */
 .navbar {
     display: flex;
     list-style: none;
@@ -53,11 +66,11 @@ html {
     letter-spacing: 0.5px; 
 }
 
-/* 4. 封面 (Hero) - 包含背景圖 */
+/* 5. 封面 (Hero) */
 .hero {
     text-align: center;
     padding: 8rem 1rem; 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('istanbul-bg.png');
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
@@ -78,7 +91,7 @@ html {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* 5. 內容區塊 (行程) */
+/* 6. 內容區塊 (行程) */
 .content-block {
     padding: 3rem 1.5rem; 
     max-width: 900px; 
@@ -102,7 +115,7 @@ html {
     padding-bottom: 0.5rem;
 }
 
-/* 6. 航班資訊 */
+/* 7. 航班資訊 */
 .flight-info {
     margin-bottom: 3rem;
     display: grid; 
@@ -198,7 +211,7 @@ html {
 }
 
 
-/* 7. 每日行程連結 */
+/* 8. 每日行程連結 */
 .daily-schedule {
     margin-top: 2rem;
 }
@@ -226,7 +239,7 @@ html {
     transform: translateX(5px); 
 }
 
-/* --- 8. 「逐日行程」展開/收合的樣式 --- */
+/* --- 9. 「逐日行程」展開/收合的樣式 --- */
 
 .day-toggle-btn {
     display: block;
@@ -319,7 +332,7 @@ html {
     font-size: 1.2rem;
 }
 
-/* --- 9. 住宿卡片樣式 (v1.7) --- */
+/* --- 10. 住宿卡片樣式 (v1.7) --- */
 .hotel-card {
     background-color: #fcfcfc; 
     border: 1px solid #eee;
@@ -362,7 +375,8 @@ html {
     background-color: #3f5870;
 }
 
-/* --- 10. (v2.0) 修正訂房代號樣式 --- */
+/* --- 11. (v2.1) 修正訂房代號樣式 --- */
+/* (原 v2.0) */
 .booking-id-text {
     background: transparent !important;
     border: none !important;
