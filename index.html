@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伊斯坦堡之旅 2025</title>
     
-    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="style.css?v=1.8">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
         
         <div class="flight-info">
             <h3>✈️ 航班資訊 (Flight Details)</h3>
-        
+            
             <div class="flight-card">
                 <div class="ticket-stub">
                     <span class="airline">TK1916</span>
@@ -41,14 +41,15 @@
                     <h4>去程 (Outbound)</h4>
                     <p class="route">曼徹斯特 (MAN) ➔ 伊斯坦堡 (IST)</p>
                     <p class="time"><strong>出發:</strong> 22:25 / <strong>抵達:</strong> 05:35 (+1)</p>
+                    <p class="details airline-name"><strong>航空公司:</strong> Turkish Airlines</p>
                     <p class="details"><strong>訂單:</strong> T2I2EL</p>
-                    <p class="details"><strong>乘客:</strong> TEYING LEE, HEIYIUNICOLE TAM</p>
+                    <p class="details"><strong>乘客:</strong> TE YING LEE, HEI YIU NICOLE TAM</p>
                 </div>
             </div>
-        
+
             <div class="flight-card">
                 <div class="ticket-stub">
-                    <span class="airline">MyTrip</span>
+                    <span class="airline">OM162</span>
                     <span class="date">JAN 01</span>
                     <span class="gate">IST</span>
                 </div>
@@ -56,7 +57,8 @@
                     <h4>回程 (Return) - 1 Stop</h4>
                     <p class="route">伊斯坦堡 (IST) ➔ 香港 (HKG)</p>
                     <p class="time"><strong>出發:</strong> 16:20 / <strong>抵達:</strong> 11:25 (+1)</p>
-                    <p class="details"><strong>訂單:</strong> 1094-149-374</p>
+                    <p class="details airline-name"><strong>航空公司:</strong> Miat Mongolian (OM162, OM297)</p>
+                    <p class="details"><strong>訂單:</strong> 8SHXXJ</p>
                     <p class="details"><strong>乘客:</strong> TE YING LEE, HEI YIU NICOLE TAM</p>
                 </div>
             </div>
@@ -68,7 +70,45 @@
                 <i>(我們之後可以點擊各天，來展開詳細內容)</i>
             </p>
             <ul class="day-links">
-                <li><a href="#">Day 1 (12/27): 抵達與安頓 (Arrival & Settling in)</a></li>
+                
+                <li class="day-toggle-container">
+                    <a href="javascript:void(0);" class="day-toggle-btn" data-target="day-1-content">
+                        Day 1 (12/27): 抵達與安頓 (Arrival & Settling in)
+                    </a>
+                    
+                    <div id="day-1-content" class="day-content">
+                        <div class="content-wrapper">
+                            <h4>📍 05:35 - 抵達伊斯坦堡 (IST)</h4>
+                            <ul>
+                                <li>領行李、辦理出關</li>
+                                <li>購買/領取網卡 (e.g., Turkcell)</li>
+                                <li>購買 Istanbulkart (交通卡)</li>
+                            </ul>
+                            
+                            <h4>🚌 07:00 - 前往市區 (Havaist 巴士)</h4>
+                            <ul>
+                                <li>搭乘 Havaist-12 線 (往 Aksaray Metro)</li>
+                                <li>預計 90 分鐘車程</li>
+                            </ul>
+
+                            <div class="hotel-card">
+                                <h4>🏨 09:00 - 住宿資訊 (Accommodation)</h4>
+                                <p><strong>飯店名稱:</strong> Nuru Ziya Residence hotel</p> 
+                                <p><strong>飯店地址:</strong> Nuru Ziya Sk. No:3, 34421 Beyoğlu</p>
+                                <p><strong>入住:</strong> 12/27/2025 - 01/01/2026 (5 晚)</p> 
+                                <p><strong>房型:</strong> Deluxe Suite</p> 
+                                <p><strong>訂房代號:</strong> 1667919457</p> 
+                                <p><strong>預訂人:</strong> Hei Yiu Nicole Tam</p> 
+                                <a href="https://www.google.com/maps/search/?api=1&query=Nuru+Ziya+Residence+hotel" class="map-link" target="_blank">在 Google 地圖上開啟</a>
+                            </div>
+                            <h4>☕️ 10:00 - 早餐 & 休息</h4>
+                            <ul>
+                                <li>在飯店附近找間咖啡廳休息 (e.g., Simit Sarayı)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
                 <li><a href="#">Day 2 (12/28): 舊城區探險 (Old City Exploration)</a></li>
                 <li><a href="#">Day 3 (12/29): 博斯普魯斯海峽遊船</a></li>
                 <li><a href="#">Day 4 (12/30): (待規劃)</a></li>
@@ -77,6 +117,24 @@
             </ul>
         </div>
     </section>
+
+    <script>
+        // 1. 找到所有「天數按鈕」
+        var toggles = document.querySelectorAll(".day-toggle-btn");
+
+        // 2. 幫每一個按鈕加上「點擊」事件
+        toggles.forEach(function(toggle) {
+            toggle.addEventListener("click", function() {
+                // 3. 找到按鈕對應的「內容 ID」
+                var targetId = this.getAttribute("data-target");
+                var content = document.getElementById(targetId);
+
+                // 4. 幫按鈕和內容「加上/移除」'active' class
+                this.classList.toggle("active");
+                content.classList.toggle("active");
+            });
+        });
+    </script>
 
 </body>
 </html>
