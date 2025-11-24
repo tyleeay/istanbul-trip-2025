@@ -1,4 +1,4 @@
-/* --- 這是「完整版」的 style.css (v4.4 - 終極同步版) --- */
+/* --- 這是「完整版」的 style.css (v4.5 - 終極同步版) --- */
 
 /* 1. 字體定義 (來自您 v3 的檔案) */
 @font-face {
@@ -364,24 +364,31 @@ body {
     width: 100px;
 }
 
-/* ↓↓↓ v4.3 正確的「虛線連結」樣式 ↓↓↓ */
+/* --- v4.5 終極修復：可點擊的地址URL樣式 --- */
 .hotel-address-url {
-    color: var(--color-text-light); /* 繼承段落的顏色 */
-    text-decoration: none; /* 移除底線 (您的手寫字體可能不需要) */
+    /* 1. 強制重置 (Bulldozer Fix) */
+    display: inline !important; /* 強制它在同一行 */
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    
+    /* 2. 想要的樣式 */
+    color: var(--color-text-light); 
+    text-decoration: none; 
     transition: color 0.2s ease;
     
-    /* 加上一個微妙的虛線底線，提示它可以點擊 */
+    /* 加上一個微妙的虛線底線 */
     border-bottom: 1px dashed var(--color-border);
 }
 
 .hotel-address-url:hover {
-    color: var(--color-primary); /* 換成主題棕色 */
-    border-bottom-color: var(--color-primary); /* 虛線也變色 */
+    color: var(--color-primary); 
+    border-bottom-color: var(--color-primary);
 }
-/* ↑↑↑ v4.3 樣式結束 ↑↑↑ */
 
 
-/* --- 11. (v2.1) 修正訂房代號樣式 --- */
+/* --- 11. 修正訂房代號樣式 --- */
 .booking-id-text {
     background: transparent !important;
     border: none !important;
