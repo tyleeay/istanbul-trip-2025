@@ -364,7 +364,7 @@ body {
     width: 100px;
 }
 
-/* --- ↓↓↓ v4.7 新增：可點擊的地址URL樣式 ↓↓↓ --- */
+/* --- ↓↓↓ v4.8 新增：懸停變藍 樣式 ↓↓↓ --- */
 .hotel-address-url {
     /* 1. 強制重置 (保留 v4.5 的) */
     display: inline !important; 
@@ -372,20 +372,20 @@ body {
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    
-    /* 2. v4.7 樣式 (不要粗體, 新顏色, 有底線) */
-    color: #007BFF; /* 一個標準的、明亮的藍色 */
-    text-decoration: underline; /* 加上底線 */
-    /* (font-weight: 600; 已被移除) */
-    
-    transition: color 0.2s ease;
+
+    /* 2. v4.8 樣式 (平時：和內文相同) */
+    color: var(--color-text-light); /* 繼承內文的淺棕色 */
+    text-decoration: none; /* 平時沒有底線 */
+
+    transition: all 0.2s ease;
 }
 
-/* 3. v4.7 Hover 效果 */
+/* 3. v4.8 Hover 效果 (懸停時) */
 .hotel-address-url:hover {
-    color: #0056b3; /* 滑鼠移上去時，變成深一點的藍色 */
+    color: #007BFF; /* 變成藍色 */
+    text-decoration: underline; /* 加上底線 */
 }
-/* --- ↑↑↑ v4.7 新樣式結束 ↑↑↑ --- */
+/* --- ↑↑↑ v4.8 新樣式結束 ↑↑↑ --- */
 
 /* --- 11. 修正訂房代號樣式 --- */
 .booking-id-text {
