@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伊斯坦堡之旅 2025</title>
     
-    <link rel="stylesheet" href="style.css?v=1.9">
-</head>
+    <link rel="stylesheet" href="style.css?v=2.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https::/fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    </head>
 <body>
 
     <nav>
@@ -93,14 +97,17 @@
 
                             <div class="hotel-card">
                                 <h4>🏨 09:00 - 住宿資訊 (Accommodation)</h4>
-                                <p><strong>飯店名稱:</strong> Nuru Ziya Residence hotel</p> 
+                                <p><strong>飯店名稱:</strong> Nuru Ziya Residence hotel</p>
                                 <p><strong>飯店地址:</strong> Nuru Ziya Sk. No:3, 34421 Beyoğlu</p>
-                                <p><strong>入住:</strong> 12/27/2025 - 01/01/2026 (5 晚)</p> 
-                                <p><strong>房型:</strong> Deluxe Suite</p> 
+                                <p><strong>入住:</strong> 12/27/2025 - 01/01/2026 (5 晚)</p>
+                                <p><strong>房型:</strong> Deluxe Suite</p>
+                                
                                 <p class="booking-id-text"><strong>訂房代號:</strong> 1667919457</p>
-                                <p><strong>預訂人:</strong> Hei Yiu Nicole Tam</p> 
+                                
+                                <p><strong>預訂人:</strong> Hei Yiu Nicole Tam</p>
                                 <a href="https://www.google.com/maps/search/?api=1&query=Nuru+Ziya+Residence+hotel" class="map-link" target="_blank">在 Google 地圖上開啟</a>
                             </div>
+
                             <h4>☕️ 10:00 - 早餐 & 休息</h4>
                             <ul>
                                 <li>在飯店附近找間咖啡廳休息 (e.g., Simit Sarayı)</li>
@@ -119,17 +126,11 @@
     </section>
 
     <script>
-        // 1. 找到所有「天數按鈕」
         var toggles = document.querySelectorAll(".day-toggle-btn");
-
-        // 2. 幫每一個按鈕加上「點擊」事件
         toggles.forEach(function(toggle) {
             toggle.addEventListener("click", function() {
-                // 3. 找到按鈕對應的「內容 ID」
                 var targetId = this.getAttribute("data-target");
                 var content = document.getElementById(targetId);
-
-                // 4. 幫按鈕和內容「加上/移除」'active' class
                 this.classList.toggle("active");
                 content.classList.toggle("active");
             });
