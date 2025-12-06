@@ -11,29 +11,32 @@
 /* 2. CSS 變數 */
 :root {
     --main-font: 'MyCustomFont', sans-serif;
-    --base-font-size: 112.5%; 
-    --color-primary: #8B5A2B; 
-    --color-text-dark: #4A3F35; 
-    --color-text-light: #6D5F53; 
-    --color-bg: #FAF3E0; 
-    --color-card: #FFFCF5; 
-    --color-border: #EAE0C8; 
-    --color-stub-bg: #F5EFE3; 
+    --base-font-size: 112.5%;
+    --font-size-title: 1.35rem;   /* 標題字體大小 */
+    --font-size-content: 1rem;    /* 內容字體大小 */
+    --color-primary: #8B5A2B;
+    --color-text-dark: #4A3F35;
+    --color-text-light: #6D5F53;
+    --color-bg: #FAF3E0;
+    --color-card: #FFFCF5;
+    --color-border: #EAE0C8;
+    --color-stub-bg: #F5EFE3;
     --color-tag-bg: #E6DCC3;
 }
 
 /* 3. 基礎設定 */
 html { font-size: var(--base-font-size); scroll-behavior: smooth; }
 body, h1, p, ul, a, h2, h3, span { margin: 0; padding: 0; font-family: var(--main-font); }
-body { background-color: var(--color-bg); color: var(--color-text-dark); padding-top: 5rem; }
+body { background-color: var(--color-bg); color: var(--color-text-dark); padding-top: 5rem; font-size: var(--font-size-content); }
+h2, h3 { font-size: var(--font-size-title); }
 
 /* 4. 導覽列 */
 .navbar {
     display: flex; list-style: none; padding: 1.2rem; justify-content: center; gap: 2rem;
-    background-color: rgba(139, 90, 43, 0.8); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; 
-    box-sizing: border-box; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); 
+    background-color: rgba(139, 90, 43, 0.8); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    box-sizing: border-box; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
-.navbar a { color: white; text-decoration: none; font-size: 1rem; letter-spacing: 0.5px; }
+.navbar a { color: white; text-decoration: none; font-size: var(--font-size-content); letter-spacing: 0.5px; }
 
 /* 5. 封面 (Hero) */
 .hero {
@@ -46,21 +49,21 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 
 /* 6. 內容區塊 */
 .content-block { padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto; }
-.content-block h2 { font-family: var(--main-font); font-size: 2.5rem; color: var(--color-primary); text-align: center; margin-bottom: 2.5rem; margin-top: 2rem; }
+.content-block h2 { font-family: var(--main-font); font-size: var(--font-size-title); color: var(--color-primary); text-align: center; margin-bottom: 2.5rem; margin-top: 2rem; }
 
 /* 7. 航班資訊 (省略重複細節，功能保持不變) */
 .flight-info { margin-bottom: 3rem; display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 768px) { .flight-info { grid-template-columns: 1fr 1fr; } }
 .flight-card { background-color: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); display: flex; overflow: hidden; }
 .ticket-stub { flex-basis: 100px; flex-shrink: 0; background-color: var(--color-stub-bg); border-right: 2px dashed #DCD0B3; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem 0.5rem; }
-.ticket-stub .airline { font-size: 1.5rem; color: var(--color-primary); font-weight: 600; }
-.ticket-stub .date { font-size: 1rem; color: var(--color-text-light); margin-top: 0.25rem; }
-.ticket-stub .gate { font-size: 1.2rem; color: var(--color-text-dark); margin-top: 0.5rem; }
+.ticket-stub .airline { font-size: var(--font-size-title); color: var(--color-primary); font-weight: 600; }
+.ticket-stub .date { font-size: var(--font-size-content); color: var(--color-text-light); margin-top: 0.25rem; }
+.ticket-stub .gate { font-size: var(--font-size-title); color: var(--color-text-dark); margin-top: 0.5rem; }
 .ticket-main { flex-grow: 1; padding: 1.5rem 1.8rem; }
-.ticket-main h4 { font-size: 1.1rem; color: #999; margin: 0 0 0.5rem 0; }
-.ticket-main .route { font-size: 1.3rem; color: var(--color-primary); font-weight: 600; margin-bottom: 0.75rem; }
-.ticket-main .time { font-size: 1rem; color: var(--color-text-dark); margin-bottom: 1rem; }
-.ticket-main .details { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.5; }
+.ticket-main h4 { font-size: var(--font-size-content); color: #999; margin: 0 0 0.5rem 0; }
+.ticket-main .route { font-size: var(--font-size-title); color: var(--color-primary); font-weight: 600; margin-bottom: 0.75rem; }
+.ticket-main .time { font-size: var(--font-size-content); color: var(--color-text-dark); margin-bottom: 1rem; }
+.ticket-main .details { font-size: var(--font-size-content); color: var(--color-text-light); line-height: 1.5; }
 .ticket-main p strong { color: var(--color-text-dark); }
 .ticket-main .airline-name { margin-top: 1rem; font-weight: 600; }
 
@@ -75,11 +78,11 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 }
 
 .attraction-group h3 {
-    font-size: 1.6rem; color: var(--color-primary); margin-bottom: 0.5rem;
+    font-size: var(--font-size-title); color: var(--color-primary); margin-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-border); padding-bottom: 0.8rem;
 }
 
-.area-desc { color: var(--color-text-light); font-style: italic; margin-bottom: 1.5rem; font-size: 0.95rem; }
+.area-desc { color: var(--color-text-light); font-style: italic; margin-bottom: 1.5rem; font-size: var(--font-size-content); }
 
 .spot-item {
     margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px dashed var(--color-border);
@@ -99,7 +102,7 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 
 /* v11.0: 景點名稱連結樣式 (與 Hotel Address 行為一致) */
 .spot-name-link {
-    font-size: 1.3rem;
+    font-size: var(--font-size-title);
     color: var(--color-text-dark); /* 平時深棕色 */
     text-decoration: none;
     font-weight: bold;
@@ -115,10 +118,10 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 .tags-row { margin-bottom: 0.8rem; }
 .spot-tag {
     display: inline-block; background-color: var(--color-tag-bg); color: var(--color-text-light);
-    font-size: 0.8rem; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 0.5rem;
+    font-size: var(--font-size-content); padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 0.5rem;
 }
 
-.spot-detail { font-size: 1rem; color: var(--color-text-light); line-height: 1.6; }
+.spot-detail { font-size: var(--font-size-content); color: var(--color-text-light); line-height: 1.6; }
 /* ↑↑↑ v11.0 樣式結束 ↑↑↑ */
 
 
@@ -129,7 +132,7 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
     border: 1px solid var(--color-border);
     border-radius: 5px; margin-bottom: 0rem;
     text-decoration: none; color: var(--color-primary);
-    font-size: 1.4rem; font-weight: 600; transition: all 0.2s ease-in-out;
+    font-size: var(--font-size-title); font-weight: 600; transition: all 0.2s ease-in-out;
     box-sizing: border-box; cursor: pointer;
 }
 .attraction-toggle-btn:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
@@ -158,7 +161,7 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
     border: 1px solid var(--color-border);
     border-radius: 5px; margin-bottom: 0.75rem;
     text-decoration: none; color: var(--color-text-dark);
-    font-size: 1.1rem; transition: all 0.2s ease-in-out;
+    font-size: var(--font-size-title); transition: all 0.2s ease-in-out;
 }
 .day-links > li > a:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
 
@@ -167,9 +170,9 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
     display: block; width: 100%; padding: 1.2rem 1rem;
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
-    border-radius: 5px; margin-bottom: 0rem; 
+    border-radius: 5px; margin-bottom: 0rem;
     text-decoration: none; color: var(--color-text-dark);
-    font-size: 1.1rem; transition: all 0.2s ease-in-out;
+    font-size: var(--font-size-title); transition: all 0.2s ease-in-out;
     box-sizing: border-box; cursor: pointer;
 }
 .day-toggle-btn:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
@@ -186,17 +189,17 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 }
 .content-wrapper { padding: 1.5rem 1.5rem; }
 .day-content.active { max-height: 1000px; transition: max-height 0.8s ease-in; }
-.content-wrapper h4 { font-size: 1.2rem; color: var(--color-primary); margin-top: 1rem; margin-bottom: 0.75rem; }
+.content-wrapper h4 { font-size: var(--font-size-title); color: var(--color-primary); margin-top: 1rem; margin-bottom: 0.75rem; }
 .content-wrapper h4:first-child { margin-top: 0; }
 .content-wrapper ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
-.content-wrapper li { font-size: 1rem; line-height: 1.6; color: var(--color-text-light); padding-left: 1.2rem; position: relative; }
-.content-wrapper li::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--color-primary); font-size: 1.2rem; }
+.content-wrapper li { font-size: var(--font-size-content); line-height: 1.6; color: var(--color-text-light); padding-left: 1.2rem; position: relative; }
+.content-wrapper li::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--color-primary); font-size: var(--font-size-title); }
 
 /* 10. Hotel Card (Flexbox Layout) */
 .hotel-card { background-color: var(--color-stub-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 1.2rem 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
 .hotel-card h4 { margin-top: 0; }
-.info-row { display: flex; font-size: 1rem; color: var(--color-text-dark); line-height: 1.7; margin-bottom: 0.5rem; }
+.info-row { display: flex; font-size: var(--font-size-content); color: var(--color-text-dark); line-height: 1.7; margin-bottom: 0.5rem; }
 .info-label { flex-basis: 110px; flex-shrink: 0; color: var(--color-text-dark); }
 .info-value { flex-grow: 1; color: var(--color-text-dark); word-break: break-all; }
-.hotel-address-url { color: var(--color-text-dark); text-decoration: none; transition: all 0.2s ease; font-size: 1rem; }
+.hotel-address-url { color: var(--color-text-dark); text-decoration: none; transition: all 0.2s ease; font-size: var(--font-size-content); }
 .hotel-address-url:hover { color: #007BFF; text-decoration: underline; }
