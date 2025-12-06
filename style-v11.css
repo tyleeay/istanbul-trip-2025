@@ -122,6 +122,33 @@ body { background-color: var(--color-bg); color: var(--color-text-dark); padding
 /* ↑↑↑ v11.0 樣式結束 ↑↑↑ */
 
 
+/* 7-2. 景點區域 Toggle (可摺疊區域) */
+.attraction-toggle-btn {
+    display: block; width: 100%; padding: 1.2rem 1rem;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 5px; margin-bottom: 0rem;
+    text-decoration: none; color: var(--color-primary);
+    font-size: 1.4rem; font-weight: 600; transition: all 0.2s ease-in-out;
+    box-sizing: border-box; cursor: pointer;
+}
+.attraction-toggle-btn:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
+.attraction-toggle-btn::after {
+    content: ''; display: inline-block; border: solid var(--color-primary);
+    border-width: 0 2px 2px 0; padding: 3px; float: right;
+    margin-top: 5px; transform: rotate(45deg); transition: transform 0.3s ease;
+}
+.attraction-toggle-btn.active::after { transform: rotate(-135deg); }
+.attraction-content {
+    background-color: var(--color-card); border: 1px solid var(--color-border); border-top: none;
+    border-radius: 0 0 5px 5px; margin-bottom: 1.5rem; max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+.attraction-wrapper { padding: 1.5rem 1.5rem; }
+.attraction-content.active { max-height: 5000px; transition: max-height 0.8s ease-in; }
+.attraction-toggle-container { margin-bottom: 0.75rem; }
+
+
 /* 8. 每日行程連結 (修復後的選擇器) */
 .daily-schedule { margin-top: 2rem; }
 .day-links { list-style: none; padding-left: 0; }
