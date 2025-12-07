@@ -160,7 +160,7 @@ h2, h3 { font-size: var(--font-size-title); }
     transition: max-height 0.5s ease-out;
 }
 .attraction-wrapper { padding: 1.5rem 1.5rem; }
-.attraction-content.active { max-height: 5000px; transition: max-height 0.8s ease-in; }
+.attraction-content.active { max-height: 15000px; transition: max-height 0.8s ease-in; }
 .attraction-toggle-container { margin-bottom: 0.75rem; }
 
 
@@ -178,6 +178,7 @@ h2, h3 { font-size: var(--font-size-title); }
 .day-links > li > a:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
 
 /* 9. Day Toggle (功能保持不變) */
+.day-toggle-container { margin-bottom: 0.75rem; }
 .day-toggle-btn {
     display: block; width: 100%; padding: 1.2rem 1rem;
     background-color: var(--color-card);
@@ -190,17 +191,17 @@ h2, h3 { font-size: var(--font-size-title); }
 .day-toggle-btn:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
 .day-toggle-btn::after {
     content: ''; display: inline-block; border: solid var(--color-text-dark);
-    border-width: 0 2px 2px 0; padding: 3px; float: right; 
+    border-width: 0 2px 2px 0; padding: 3px; float: right;
     margin-top: 5px; transform: rotate(45deg); transition: transform 0.3s ease;
 }
 .day-toggle-btn.active::after { transform: rotate(-135deg); }
 .day-content {
-    background-color: var(--color-card); border: 1px solid var(--color-border); border-top: none; 
-    border-radius: 0 0 5px 5px; margin-bottom: 0.75rem; max-height: 0; overflow: hidden;
-    transition: max-height 0.5s ease-out; 
+    background-color: var(--color-card); border: 1px solid var(--color-border); border-top: none;
+    border-radius: 0 0 5px 5px; margin-bottom: 0rem; max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease-out;
 }
 .content-wrapper { padding: 1.5rem 1.5rem; }
-.day-content.active { max-height: 1000px; transition: max-height 0.8s ease-in; }
+.day-content.active { max-height: 2000px; transition: max-height 0.8s ease-in; }
 .content-wrapper h4 { font-size: var(--font-size-title); color: var(--color-primary); margin-top: 1rem; margin-bottom: 0.75rem; }
 .content-wrapper h4:first-child { margin-top: 0; }
 .content-wrapper ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
