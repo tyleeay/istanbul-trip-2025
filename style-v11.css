@@ -121,7 +121,19 @@ h2, h3 { font-size: var(--font-size-title); }
     font-size: var(--font-size-content); padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 0.5rem;
 }
 
-.spot-detail { font-size: var(--font-size-content); color: var(--color-text-light); line-height: 1.6; }
+.spot-detail {
+    font-size: var(--font-size-content);
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+.spot-detail strong {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+}
+.spot-detail strong:first-child {
+    margin-top: 0;
+}
 /* ↑↑↑ v11.0 樣式結束 ↑↑↑ */
 
 
@@ -131,13 +143,13 @@ h2, h3 { font-size: var(--font-size-title); }
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
     border-radius: 5px; margin-bottom: 0rem;
-    text-decoration: none; color: var(--color-primary);
+    text-decoration: none; color: var(--color-text-dark);
     font-size: var(--font-size-title); font-weight: 600; transition: all 0.2s ease-in-out;
     box-sizing: border-box; cursor: pointer;
 }
 .attraction-toggle-btn:hover { background-color: var(--color-stub-bg); transform: translateX(5px); }
 .attraction-toggle-btn::after {
-    content: ''; display: inline-block; border: solid var(--color-primary);
+    content: ''; display: inline-block; border: solid var(--color-text-dark);
     border-width: 0 2px 2px 0; padding: 3px; float: right;
     margin-top: 5px; transform: rotate(45deg); transition: transform 0.3s ease;
 }
