@@ -154,6 +154,10 @@ h2, h3 { font-size: var(--font-size-title); }
     margin-top: 5px; transform: rotate(45deg); transition: transform 0.3s ease;
 }
 .attraction-toggle-btn.active::after { transform: rotate(-135deg); }
+.attraction-toggle-btn.active {
+    margin-bottom: 0.75rem;
+    border-radius: 5px 5px 0 0;
+}
 .attraction-content {
     background-color: var(--color-card); border: 1px solid var(--color-border); border-top: none;
     border-radius: 0 0 5px 5px; margin-bottom: 1.5rem; max-height: 0; overflow: hidden;
@@ -195,6 +199,10 @@ h2, h3 { font-size: var(--font-size-title); }
     margin-top: 5px; transform: rotate(45deg); transition: transform 0.3s ease;
 }
 .day-toggle-btn.active::after { transform: rotate(-135deg); }
+.day-toggle-btn.active {
+    margin-bottom: 0.75rem;
+    border-radius: 5px 5px 0 0;
+}
 .day-content {
     background-color: var(--color-card); border: 1px solid var(--color-border); border-top: none;
     border-radius: 0 0 5px 5px; margin-bottom: 1.5rem; max-height: 0; overflow: hidden;
