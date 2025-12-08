@@ -1365,24 +1365,43 @@
                         currentCard = null;
                         currentCardType = null;
 
-                        // 滾動到該天的行程區域並高亮項目
+                        // 展開並滾動到該天的行程區域
                         setTimeout(() => {
-                            dropZone.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
+                            // 1. 找到該天的 day-content 和 toggle button
+                            const dayContentId = `day-${targetDay}-content`;
+                            const dayContent = document.getElementById(dayContentId);
+                            const dayToggleBtn = document.querySelector(`[data-target="${dayContentId}"]`);
+                            const dayContainer = dayToggleBtn ? dayToggleBtn.closest('.day-toggle-container') : null;
 
-                            // 高亮新添加的項目
-                            const highlightColor = itemType === 'spot'
-                                ? 'rgba(138, 191, 163, 0.3)'  // 綠色 for spots
-                                : 'rgba(255, 140, 150, 0.3)';  // 粉紅色 for food
+                            // 2. 如果 day-content 沒有展開，展開它
+                            if (dayContent && !dayContent.classList.contains('active')) {
+                                dayContent.classList.add('active');
+                                if (dayToggleBtn) {
+                                    dayToggleBtn.classList.add('active');
+                                }
+                            }
 
-                            activityBlock.style.transition = 'background-color 0.5s ease';
-                            activityBlock.style.backgroundColor = highlightColor;
+                            // 3. 滾動到該天的容器
+                            if (dayContainer) {
+                                dayContainer.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }
 
+                            // 4. 高亮新添加的項目
                             setTimeout(() => {
-                                activityBlock.style.backgroundColor = '';
-                            }, 2000);
+                                const highlightColor = itemType === 'spot'
+                                    ? 'rgba(138, 191, 163, 0.3)'  // 綠色 for spots
+                                    : 'rgba(255, 140, 150, 0.3)';  // 粉紅色 for food
+
+                                activityBlock.style.transition = 'background-color 0.5s ease';
+                                activityBlock.style.backgroundColor = highlightColor;
+
+                                setTimeout(() => {
+                                    activityBlock.style.backgroundColor = '';
+                                }, 2000);
+                            }, 500);
                         }, 300);
                     }
                 });
@@ -1411,11 +1430,11 @@
             <h3>⚡ 快速添加</h3>
             <div class="item-name" id="quick-add-item-name"></div>
             <div class="quick-add-buttons">
-                <button class="quick-add-day-btn" data-day="day1">📅 Day 1</button>
-                <button class="quick-add-day-btn" data-day="day2">📅 Day 2</button>
-                <button class="quick-add-day-btn" data-day="day3">📅 Day 3</button>
-                <button class="quick-add-day-btn" data-day="day4">📅 Day 4</button>
-                <button class="quick-add-day-btn" data-day="day5">📅 Day 5</button>
+                <button class="quick-add-day-btn" data-day="1">📅 Day 1</button>
+                <button class="quick-add-day-btn" data-day="2">📅 Day 2</button>
+                <button class="quick-add-day-btn" data-day="3">📅 Day 3</button>
+                <button class="quick-add-day-btn" data-day="4">📅 Day 4</button>
+                <button class="quick-add-day-btn" data-day="5">📅 Day 5</button>
                 <button class="quick-add-cancel-btn">取消</button>
             </div>
         </div>
