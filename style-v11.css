@@ -8,19 +8,48 @@
     font-style: normal;
 }
 
-/* 2. CSS 變數 */
+/* 2. CSS 變數 - 伊斯坦堡配色主題 */
 :root {
     --main-font: 'MyCustomFont', sans-serif;
     --base-font-size: 112.5%;
     --font-size-title: 1.35rem;   /* 標題字體大小 */
     --font-size-content: 1rem;    /* 內容字體大小 */
-    --color-primary: #8B5A2B;
-    --color-text-dark: #4A3F35;
-    --color-text-light: #6D5F53;
-    --color-bg: #FAF3E0;
-    --color-card: #FFFCF5;
-    --color-border: #EAE0C8;
-    --color-stub-bg: #F5EFE3;
+
+    /* 主色調 - 藍色清真寺靈感 */
+    --color-mosque-blue: #4A90A4;
+    --color-mosque-blue-light: #5CA3B8;
+    --color-mosque-blue-dark: #3A7388;
+
+    /* 暖色調 - 香料市場與日落 */
+    --color-spice-orange: #D97742;
+    --color-sunset-orange: #E89560;
+
+    /* 紅褐色 - 土耳其紅茶 */
+    --color-tea-brown: #A0522D;
+    --color-tea-light: #C07854;
+
+    /* 金色 - 宮殿裝飾 */
+    --color-palace-gold: #D4AF37;
+    --color-gold-light: #E5C158;
+
+    /* 薄荷綠 - 土耳其特色 */
+    --color-mint-green: #8ABFA3;
+    --color-mint-light: #9FCFB5;
+
+    /* 珊瑚粉 - 土耳其燈飾 */
+    --color-coral-pink: #E8998D;
+    --color-coral-light: #F2B5AC;
+
+    /* 中性色 */
+    --color-text-dark: #3D3D3D;
+    --color-text-light: #6D6D6D;
+    --color-bg: #FBF8F3;
+    --color-card: #FFFFFF;
+    --color-border: #E8DFD0;
+
+    /* 保留原有變數名稱以兼容 */
+    --color-primary: var(--color-mosque-blue);
+    --color-stub-bg: #F7F3EE;
     --color-tag-bg: #E6DCC3;
 }
 
@@ -30,13 +59,24 @@ body, h1, p, ul, a, h2, h3, span { margin: 0; padding: 0; font-family: var(--mai
 body { background-color: var(--color-bg); color: var(--color-text-dark); padding-top: 5rem; font-size: var(--font-size-content); }
 h2, h3 { font-size: var(--font-size-title); }
 
-/* 4. 導覽列 */
+/* 4. 導覽列 - 藍色清真寺主題 */
 .navbar {
     display: flex; list-style: none; padding: 1.2rem; justify-content: center; gap: 2rem;
-    background-color: rgba(139, 90, 43, 0.8); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.95) 0%, rgba(58, 115, 136, 0.95) 100%);
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     box-sizing: border-box; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.navbar a { color: white; text-decoration: none; font-size: var(--font-size-content); letter-spacing: 0.5px; }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: var(--font-size-content);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+.navbar a:hover {
+    color: var(--color-gold-light);
+}
 
 /* 5. 封面 (Hero) */
 .hero {
@@ -49,7 +89,27 @@ h2, h3 { font-size: var(--font-size-title); }
 
 /* 6. 內容區塊 */
 .content-block { padding: 3rem 1.5rem; max-width: 900px; margin: 0 auto; }
-.content-block h2 { font-family: var(--main-font); font-size: var(--font-size-title); color: var(--color-primary); text-align: center; margin-bottom: 2.5rem; margin-top: 2rem; }
+.content-block h2 {
+    font-family: var(--main-font);
+    font-size: var(--font-size-title);
+    color: var(--color-mosque-blue);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+.content-block h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-spice-orange) 0%, var(--color-palace-gold) 100%);
+    border-radius: 2px;
+}
 
 /* 7. 航班資訊 (省略重複細節，功能保持不變) */
 .flight-info { margin-bottom: 3rem; display: grid; grid-template-columns: 1fr; gap: 2rem; }
@@ -111,14 +171,58 @@ h2, h3 { font-size: var(--font-size-title); }
     transition: all 0.2s ease;
 }
 .spot-name-link:hover {
-    color: #007BFF; /* 懸停變藍 */
+    color: var(--color-mosque-blue);
     text-decoration: underline;
 }
 
 .tags-row { margin-bottom: 0.8rem; }
 .spot-tag {
-    display: inline-block; background-color: var(--color-tag-bg); color: var(--color-text-light);
-    font-size: var(--font-size-content); padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 0.5rem;
+    display: inline-block;
+    background-color: var(--color-tag-bg);
+    color: var(--color-text-dark);
+    font-size: var(--font-size-content);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-right: 6px;
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+}
+
+.spot-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 不同類型標籤的配色 */
+.spot-tag:nth-child(1) {
+    background: linear-gradient(135deg, rgba(138, 191, 163, 0.15) 0%, rgba(159, 207, 181, 0.1) 100%);
+    color: var(--color-mint-green);
+    border-color: var(--color-mint-green);
+}
+
+.spot-tag:nth-child(2) {
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.15) 0%, rgba(92, 163, 184, 0.1) 100%);
+    color: var(--color-mosque-blue);
+    border-color: var(--color-mosque-blue);
+}
+
+.spot-tag:nth-child(3) {
+    background: linear-gradient(135deg, rgba(232, 153, 141, 0.15) 0%, rgba(242, 181, 172, 0.1) 100%);
+    color: var(--color-coral-pink);
+    border-color: var(--color-coral-pink);
+}
+
+.spot-tag:nth-child(4) {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(229, 193, 88, 0.1) 100%);
+    color: var(--color-palace-gold);
+    border-color: var(--color-palace-gold);
+}
+
+.spot-tag:nth-child(5) {
+    background: linear-gradient(135deg, rgba(217, 119, 66, 0.15) 0%, rgba(232, 149, 96, 0.1) 100%);
+    color: var(--color-spice-orange);
+    border-color: var(--color-spice-orange);
 }
 
 .spot-detail {
@@ -235,19 +339,19 @@ h2, h3 { font-size: var(--font-size-title); }
     padding-bottom: 0;
 }
 
-/* 優雅的時間標籤 - 圓形設計 */
+/* 優雅的時間標籤 - 圓形設計（縮小版） */
 .timeline-time {
     flex-shrink: 0;
-    width: 90px;
-    height: 90px;
+    width: 65px;
+    height: 65px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #8B5A2B 0%, #A67C52 100%);
+    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
     border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(139, 90, 43, 0.25),
-                0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 12px rgba(138, 191, 163, 0.3),
+                0 2px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2;
 }
@@ -258,21 +362,42 @@ h2, h3 { font-size: var(--font-size-title); }
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .timeline-time span {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: white;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* 連接線 - 從圓形中心延伸 */
+/* 為不同的時間點使用不同顏色 */
+.timeline-item:nth-child(1) .timeline-time {
+    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
+    box-shadow: 0 3px 12px rgba(138, 191, 163, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(2) .timeline-time {
+    background: linear-gradient(135deg, var(--color-coral-pink) 0%, var(--color-coral-light) 100%);
+    box-shadow: 0 3px 12px rgba(232, 153, 141, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(3) .timeline-time {
+    background: linear-gradient(135deg, var(--color-mosque-blue) 0%, var(--color-mosque-blue-light) 100%);
+    box-shadow: 0 3px 12px rgba(74, 144, 164, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item:nth-child(4) .timeline-time {
+    background: linear-gradient(135deg, var(--color-palace-gold) 0%, var(--color-gold-light) 100%);
+    box-shadow: 0 3px 12px rgba(212, 175, 55, 0.3), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 連接線 - 從圓形中心延伸，使用漸變色 */
 .timeline-item:not(:last-child) .timeline-time::after {
     content: '';
     position: absolute;
@@ -280,12 +405,12 @@ h2, h3 { font-size: var(--font-size-title); }
     left: 50%;
     transform: translateX(-50%);
     width: 3px;
-    height: 60px;
+    height: 50px;
     background: linear-gradient(to bottom,
-                #A67C52 0%,
-                rgba(166, 124, 82, 0.5) 50%,
-                rgba(166, 124, 82, 0.2) 100%);
+                currentColor 0%,
+                rgba(138, 191, 163, 0.3) 100%);
     border-radius: 2px;
+    opacity: 0.4;
 }
 
 /* 美化的標記點 */
@@ -296,13 +421,13 @@ h2, h3 { font-size: var(--font-size-title); }
 /* 優雅的內容卡片 */
 .timeline-content {
     flex: 1;
-    background: linear-gradient(135deg, #FFFCF5 0%, #FAF3E0 100%);
+    background: linear-gradient(135deg, rgba(138, 191, 163, 0.08) 0%, rgba(159, 207, 181, 0.05) 100%);
     border: none;
-    border-left: 4px solid #8B5A2B;
+    border-left: 4px solid var(--color-mint-green);
     border-radius: 0 16px 16px 0;
-    padding: 1.8rem 2rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06),
-                0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 1.6rem 1.8rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05),
+                0 2px 6px rgba(0, 0, 0, 0.03);
     position: relative;
     transition: all 0.3s ease;
 }
@@ -311,27 +436,87 @@ h2, h3 { font-size: var(--font-size-title); }
     content: '';
     position: absolute;
     left: -12px;
-    top: 30px;
+    top: 26px;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 8px 12px 8px 0;
-    border-color: transparent #8B5A2B transparent transparent;
+    border-color: transparent var(--color-mint-green) transparent transparent;
 }
 
 .timeline-content:hover {
     transform: translateX(5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1),
-                0 4px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08),
+                0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 不同時間點的卡片配色 */
+.timeline-item:nth-child(1) .timeline-content {
+    background: linear-gradient(135deg, rgba(138, 191, 163, 0.08) 0%, rgba(159, 207, 181, 0.05) 100%);
+    border-left-color: var(--color-mint-green);
+}
+.timeline-item:nth-child(1) .timeline-content::before {
+    border-color: transparent var(--color-mint-green) transparent transparent;
+}
+.timeline-item:nth-child(1) .timeline-content h4 {
+    color: var(--color-mint-green);
+    border-bottom-color: rgba(138, 191, 163, 0.2);
+}
+.timeline-item:nth-child(1) .timeline-content p::before {
+    color: var(--color-mint-green);
+}
+
+.timeline-item:nth-child(2) .timeline-content {
+    background: linear-gradient(135deg, rgba(232, 153, 141, 0.08) 0%, rgba(242, 181, 172, 0.05) 100%);
+    border-left-color: var(--color-coral-pink);
+}
+.timeline-item:nth-child(2) .timeline-content::before {
+    border-color: transparent var(--color-coral-pink) transparent transparent;
+}
+.timeline-item:nth-child(2) .timeline-content h4 {
+    color: var(--color-coral-pink);
+    border-bottom-color: rgba(232, 153, 141, 0.2);
+}
+.timeline-item:nth-child(2) .timeline-content p::before {
+    color: var(--color-coral-pink);
+}
+
+.timeline-item:nth-child(3) .timeline-content {
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.08) 0%, rgba(92, 163, 184, 0.05) 100%);
+    border-left-color: var(--color-mosque-blue);
+}
+.timeline-item:nth-child(3) .timeline-content::before {
+    border-color: transparent var(--color-mosque-blue) transparent transparent;
+}
+.timeline-item:nth-child(3) .timeline-content h4 {
+    color: var(--color-mosque-blue);
+    border-bottom-color: rgba(74, 144, 164, 0.2);
+}
+.timeline-item:nth-child(3) .timeline-content p::before {
+    color: var(--color-mosque-blue);
+}
+
+.timeline-item:nth-child(4) .timeline-content {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(229, 193, 88, 0.05) 100%);
+    border-left-color: var(--color-palace-gold);
+}
+.timeline-item:nth-child(4) .timeline-content::before {
+    border-color: transparent var(--color-palace-gold) transparent transparent;
+}
+.timeline-item:nth-child(4) .timeline-content h4 {
+    color: var(--color-palace-gold);
+    border-bottom-color: rgba(212, 175, 55, 0.2);
+}
+.timeline-item:nth-child(4) .timeline-content p::before {
+    color: var(--color-palace-gold);
 }
 
 .timeline-content h4 {
     margin: 0 0 1rem 0;
-    font-size: 1.3rem;
-    color: var(--color-primary);
+    font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-bottom: 2px solid rgba(139, 90, 43, 0.15);
+    border-bottom: 2px solid;
     padding-bottom: 0.8rem;
     display: flex;
     align-items: center;
@@ -358,7 +543,6 @@ h2, h3 { font-size: var(--font-size-title); }
     content: '◆';
     position: absolute;
     left: 0;
-    color: rgba(139, 90, 43, 0.4);
     font-size: 0.7rem;
 }
 
@@ -391,16 +575,16 @@ h2, h3 { font-size: var(--font-size-title); }
     }
 
     .timeline-time {
-        width: 70px;
-        height: 70px;
+        width: 55px;
+        height: 55px;
     }
 
     .timeline-time span {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
     }
 
     .timeline-item:not(:last-child) .timeline-time::after {
-        height: 40px;
+        height: 35px;
     }
 
     .timeline-content {
@@ -412,7 +596,20 @@ h2, h3 { font-size: var(--font-size-title); }
         left: 30px;
         top: -12px;
         border-width: 0 8px 12px 8px;
-        border-color: transparent transparent #8B5A2B transparent;
+    }
+
+    /* 手機版箭頭顏色 */
+    .timeline-item:nth-child(1) .timeline-content::before {
+        border-color: transparent transparent var(--color-mint-green) transparent;
+    }
+    .timeline-item:nth-child(2) .timeline-content::before {
+        border-color: transparent transparent var(--color-coral-pink) transparent;
+    }
+    .timeline-item:nth-child(3) .timeline-content::before {
+        border-color: transparent transparent var(--color-mosque-blue) transparent;
+    }
+    .timeline-item:nth-child(4) .timeline-content::before {
+        border-color: transparent transparent var(--color-palace-gold) transparent;
     }
 }
 
