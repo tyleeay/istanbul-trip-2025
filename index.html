@@ -1078,11 +1078,11 @@
 
         // === 點擊活動區塊導航到景點詳情 ===
         function navigateToSpotDetail(spotId) {
-            // 處理特殊映射：taksim-square 映射到 istiklal-street
+            // 處理特殊映射
             const spotMapping = {
-                'taksim-square': 'istiklal-street',
-                'pierre-loti': null,  // 沒有詳情頁
-                'camlica-hill': null  // 沒有詳情頁
+                'taksim-square': 'istiklal-street',  // 塔克西姆廣場 → 獨立大街
+                'pierre-loti': 'balat',              // 皮耶洛蒂山丘 → 巴拉特
+                'camlica-hill': 'balat'              // 恰姆勒加山丘 → 巴拉特
             };
 
             const mappedSpotId = spotMapping[spotId] !== undefined ? spotMapping[spotId] : spotId;
