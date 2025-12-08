@@ -860,6 +860,14 @@ h2, h3 { font-size: var(--font-size-title); }
     border-bottom: 2px dashed var(--color-border);
 }
 
+/* 按鈕容器 */
+.pool-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
 /* 分頁按鈕 */
 .pool-tabs {
     display: flex;
@@ -1040,7 +1048,7 @@ h2, h3 { font-size: var(--font-size-title); }
     }
 
     /* 手機版：按鈕改為兩行排列（分頁按鈕一行，重置按鈕一行） */
-    .spots-pool > div:first-child {
+    .pool-controls {
         flex-direction: column !important;
         gap: 0.8rem;
         align-items: stretch !important;
@@ -1078,11 +1086,13 @@ h2, h3 { font-size: var(--font-size-title); }
 
     /* 改善時間標籤文字溢出問題 */
     .activity-time-badge {
-        font-size: 0.85rem !important;
-        padding: 0.5rem 0.6rem !important;
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.5rem !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        min-width: auto !important;
+        max-width: 100%;
     }
 }
 
