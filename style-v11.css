@@ -111,6 +111,16 @@ h2, h3 { font-size: var(--font-size-title); }
     border-radius: 2px;
 }
 
+/* 景點口袋名單標題靠左 */
+.daily-schedule h2 {
+    text-align: left;
+    padding-left: 0;
+}
+.daily-schedule h2::after {
+    left: 0;
+    transform: none;
+}
+
 /* 7. 航班資訊 (省略重複細節，功能保持不變) */
 .flight-info { margin-bottom: 3rem; display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 768px) { .flight-info { grid-template-columns: 1fr 1fr; } }
@@ -566,6 +576,111 @@ h2, h3 { font-size: var(--font-size-title); }
     border: 2px dashed var(--color-border);
 }
 
+/* 9-3. 活動區塊樣式 - 區塊式排列 */
+.activity-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.activity-block {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: var(--color-card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+}
+
+.activity-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 時間徽章 */
+.activity-time-badge {
+    flex-shrink: 0;
+    min-width: 110px;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(138, 191, 163, 0.3);
+}
+
+/* 活動資訊 */
+.activity-info {
+    flex: 1;
+}
+
+.activity-info h4 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.25rem;
+    color: var(--color-mosque-blue);
+    font-weight: 600;
+}
+
+.activity-info p {
+    margin: 0.5rem 0;
+    font-size: var(--font-size-content);
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.activity-info p strong {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+/* 不同時段的配色 */
+.activity-block.morning {
+    border-left-color: var(--color-mint-green);
+    background: linear-gradient(135deg, rgba(138, 191, 163, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.activity-block.morning .activity-time-badge {
+    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
+    box-shadow: 0 2px 8px rgba(138, 191, 163, 0.3);
+}
+
+.activity-block.afternoon {
+    border-left-color: var(--color-coral-pink);
+    background: linear-gradient(135deg, rgba(232, 153, 141, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.activity-block.afternoon .activity-time-badge {
+    background: linear-gradient(135deg, var(--color-coral-pink) 0%, var(--color-coral-light) 100%);
+    box-shadow: 0 2px 8px rgba(232, 153, 141, 0.3);
+}
+
+.activity-block.evening {
+    border-left-color: var(--color-mosque-blue);
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.activity-block.evening .activity-time-badge {
+    background: linear-gradient(135deg, var(--color-mosque-blue) 0%, var(--color-mosque-blue-light) 100%);
+    box-shadow: 0 2px 8px rgba(74, 144, 164, 0.3);
+}
+
+.activity-block.night {
+    border-left-color: var(--color-palace-gold);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.activity-block.night .activity-time-badge {
+    background: linear-gradient(135deg, var(--color-palace-gold) 0%, var(--color-gold-light) 100%);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
 /* 響應式設計 */
 @media (max-width: 600px) {
     .timeline-item {
@@ -610,6 +725,28 @@ h2, h3 { font-size: var(--font-size-title); }
     }
     .timeline-item:nth-child(4) .timeline-content::before {
         border-color: transparent transparent var(--color-palace-gold) transparent;
+    }
+
+    /* 活動區塊響應式設計 */
+    .activity-block {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+
+    .activity-time-badge {
+        min-width: auto;
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .activity-info h4 {
+        font-size: 1.1rem;
+    }
+
+    .activity-info p {
+        font-size: 0.95rem;
     }
 }
 
