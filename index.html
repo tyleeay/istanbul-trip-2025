@@ -619,8 +619,84 @@
         <div id="itinerary-section" class="daily-schedule">
             <h3>🗓️ 逐日行程 (Daily Schedule)</h3>
             <p style="text-align: center; color: #777; margin-bottom: 1.5rem;">
-                <i>(我們將會從上面的清單中挑選並填入這裡)</i>
+                <i>(從下方景點清單拖動景點到行程中安排)</i>
             </p>
+
+            <!-- 景點池 -->
+            <div class="spots-pool">
+                <h3>🎒 景點清單 (拖動到下方安排行程)</h3>
+                <div class="spots-grid" id="spots-pool">
+                    <div class="spot-card" draggable="true" data-spot-id="hagia-sophia" data-area="舊城區">
+                        <div class="spot-card-name">聖索菲亞大教堂</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="blue-mosque" data-area="舊城區">
+                        <div class="spot-card-name">藍色清真寺</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="topkapi-palace" data-area="舊城區">
+                        <div class="spot-card-name">托普卡帕皇宮</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="basilica-cistern" data-area="舊城區">
+                        <div class="spot-card-name">地下水宮殿</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="hippodrome" data-area="舊城區">
+                        <div class="spot-card-name">君士坦丁堡競技場</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="grand-bazaar" data-area="舊城區">
+                        <div class="spot-card-name">大巴札</div>
+                        <div class="spot-card-area">舊城區市集</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="spice-bazaar" data-area="舊城區">
+                        <div class="spot-card-name">香料市集</div>
+                        <div class="spot-card-area">舊城區市集</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="suleymaniye-mosque" data-area="舊城區">
+                        <div class="spot-card-name">蘇萊曼尼耶清真寺</div>
+                        <div class="spot-card-area">舊城區高處</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="galata-tower" data-area="新城區">
+                        <div class="spot-card-name">加拉達石塔</div>
+                        <div class="spot-card-area">加拉達區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="istiklal-street" data-area="新城區">
+                        <div class="spot-card-name">獨立大街</div>
+                        <div class="spot-card-area">貝伊奧盧區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="taksim-square" data-area="新城區">
+                        <div class="spot-card-name">塔克西姆廣場</div>
+                        <div class="spot-card-area">貝伊奧盧區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="dolmabahce-palace" data-area="博斯普魯斯">
+                        <div class="spot-card-name">多瑪巴切皇宮</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="ortakoy-mosque" data-area="博斯普魯斯">
+                        <div class="spot-card-name">奧塔科伊清真寺</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="maiden-tower" data-area="博斯普魯斯">
+                        <div class="spot-card-name">少女塔</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="balat" data-area="特色街區">
+                        <div class="spot-card-name">巴拉特彩色街區</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="pierre-loti" data-area="特色街區">
+                        <div class="spot-card-name">皮耶洛蒂山丘</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="camlica-hill" data-area="特色街區">
+                        <div class="spot-card-name">恰姆勒加山丘</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                </div>
+            </div>
+
             <ul class="day-links">
                 <li class="day-toggle-container">
                     <a href="javascript:void(0);" class="day-toggle-btn" data-target="day-1-content">
@@ -705,81 +781,6 @@
                     </div>
                 </li>
             </ul>
-
-            <!-- 景點池 -->
-            <div class="spots-pool">
-                <h3>🎒 景點清單 (拖動到上方安排行程)</h3>
-                <div class="spots-grid" id="spots-pool">
-                    <div class="spot-card" draggable="true" data-spot-id="hagia-sophia" data-area="舊城區">
-                        <div class="spot-card-name">聖索菲亞大教堂</div>
-                        <div class="spot-card-area">舊城區核心</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="blue-mosque" data-area="舊城區">
-                        <div class="spot-card-name">藍色清真寺</div>
-                        <div class="spot-card-area">舊城區核心</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="topkapi-palace" data-area="舊城區">
-                        <div class="spot-card-name">托普卡帕皇宮</div>
-                        <div class="spot-card-area">舊城區核心</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="basilica-cistern" data-area="舊城區">
-                        <div class="spot-card-name">地下水宮殿</div>
-                        <div class="spot-card-area">舊城區核心</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="hippodrome" data-area="舊城區">
-                        <div class="spot-card-name">君士坦丁堡競技場</div>
-                        <div class="spot-card-area">舊城區核心</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="grand-bazaar" data-area="舊城區">
-                        <div class="spot-card-name">大巴札</div>
-                        <div class="spot-card-area">舊城區市集</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="spice-bazaar" data-area="舊城區">
-                        <div class="spot-card-name">香料市集</div>
-                        <div class="spot-card-area">舊城區市集</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="suleymaniye-mosque" data-area="舊城區">
-                        <div class="spot-card-name">蘇萊曼尼耶清真寺</div>
-                        <div class="spot-card-area">舊城區高處</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="galata-tower" data-area="新城區">
-                        <div class="spot-card-name">加拉達石塔</div>
-                        <div class="spot-card-area">加拉達區</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="istiklal-street" data-area="新城區">
-                        <div class="spot-card-name">獨立大街</div>
-                        <div class="spot-card-area">貝伊奧盧區</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="taksim-square" data-area="新城區">
-                        <div class="spot-card-name">塔克西姆廣場</div>
-                        <div class="spot-card-area">貝伊奧盧區</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="dolmabahce-palace" data-area="博斯普魯斯">
-                        <div class="spot-card-name">多瑪巴切皇宮</div>
-                        <div class="spot-card-area">博斯普魯斯沿岸</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="ortakoy-mosque" data-area="博斯普魯斯">
-                        <div class="spot-card-name">奧塔科伊清真寺</div>
-                        <div class="spot-card-area">博斯普魯斯沿岸</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="maiden-tower" data-area="博斯普魯斯">
-                        <div class="spot-card-name">少女塔</div>
-                        <div class="spot-card-area">博斯普魯斯沿岸</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="balat" data-area="特色街區">
-                        <div class="spot-card-name">巴拉特彩色街區</div>
-                        <div class="spot-card-area">特色街區</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="pierre-loti" data-area="特色街區">
-                        <div class="spot-card-name">皮耶洛蒂山丘</div>
-                        <div class="spot-card-area">特色街區</div>
-                    </div>
-                    <div class="spot-card" draggable="true" data-spot-id="camlica-hill" data-area="特色街區">
-                        <div class="spot-card-name">恰姆勒加山丘</div>
-                        <div class="spot-card-area">特色街區</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
