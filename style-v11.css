@@ -744,6 +744,12 @@ h2, h3 { font-size: var(--font-size-title); }
     color: var(--color-mint-green);
 }
 
+/* 美食項目的粉紅色時間標籤 */
+.activity-block.food .activity-time-badge {
+    border-color: #ff8c96;
+    color: #ff8c96;
+}
+
 .activity-block.afternoon .activity-time-badge {
     border-color: var(--color-coral-pink);
     color: var(--color-coral-pink);
