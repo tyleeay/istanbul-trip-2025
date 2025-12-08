@@ -619,6 +619,12 @@
 
             <!-- 景點/美食池 -->
             <div class="spots-pool">
+                <!-- 手機版提示訊息 -->
+                <div class="mobile-hint">
+                    📱 <strong>手機版操作提示</strong><br>
+                    點擊景點或美食卡片，選擇要添加到哪一天的行程
+                </div>
+
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                     <div class="pool-tabs">
                         <button class="pool-tab active" data-tab="spots">🎒 景點清單</button>
@@ -1256,8 +1262,141 @@
                     });
                 }
             });
+
+            // === 手機版快速添加功能 ===
+            const isMobile = window.innerWidth <= 600;
+            const modal = document.getElementById('quick-add-modal');
+            const modalItemName = document.getElementById('quick-add-item-name');
+            let currentCard = null;
+            let currentCardType = null;
+
+            // 手機版：為景點和美食卡片添加點擊快速添加
+            if (isMobile) {
+                // 景點卡片點擊
+                document.querySelectorAll('.spot-card').forEach(card => {
+                    card.addEventListener('click', function(e) {
+                        if (this.classList.contains('hidden')) return;
+                        currentCard = this;
+                        currentCardType = 'spot';
+                        const spotName = this.querySelector('.spot-card-name').textContent;
+                        modalItemName.textContent = spotName;
+                        modal.classList.add('active');
+                    });
+                });
+
+                // 美食卡片點擊（點擊卡片本身，但不是名稱）
+                document.querySelectorAll('.food-card').forEach(card => {
+                    card.addEventListener('click', function(e) {
+                        // 如果點擊的是名稱（有地圖連結），不處理快速添加
+                        if (e.target.classList.contains('food-card-name') && this.hasAttribute('data-map-url')) {
+                            return;
+                        }
+                        if (this.classList.contains('hidden')) return;
+                        currentCard = this;
+                        currentCardType = 'food';
+                        const foodName = this.querySelector('.food-card-name').textContent;
+                        modalItemName.textContent = foodName;
+                        modal.classList.add('active');
+                    });
+                });
+            }
+
+            // 快速添加按鈕事件
+            document.querySelectorAll('.quick-add-day-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetDay = this.getAttribute('data-day');
+                    const dropZone = document.querySelector(`[data-day="${targetDay}"]`);
+
+                    if (currentCard && dropZone) {
+                        // 創建活動區塊
+                        const activityBlock = document.createElement('div');
+                        activityBlock.className = `activity-block ${currentCardType === 'spot' ? 'morning' : 'food'}`;
+
+                        if (currentCardType === 'spot') {
+                            const spotId = currentCard.getAttribute('data-spot-id');
+                            const spotName = currentCard.querySelector('.spot-card-name').textContent;
+                            const spotArea = currentCard.querySelector('.spot-card-area').textContent;
+
+                            activityBlock.setAttribute('data-spot-id', spotId);
+                            activityBlock.innerHTML = `
+                                <div class="activity-time-badge">自行安排</div>
+                                <div class="activity-info">
+                                    <h4>${spotName}</h4>
+                                    <p>${spotArea}</p>
+                                </div>
+                            `;
+
+                            // 隱藏景點卡片
+                            currentCard.classList.add('hidden');
+                        } else {
+                            const foodId = currentCard.getAttribute('data-food-id');
+                            const foodName = currentCard.querySelector('.food-card-name').textContent;
+                            const foodType = currentCard.querySelector('.food-card-type').textContent;
+                            const mapUrl = currentCard.getAttribute('data-map-url');
+
+                            activityBlock.setAttribute('data-food-id', foodId);
+                            if (mapUrl) {
+                                activityBlock.setAttribute('data-map-url', mapUrl);
+                            }
+                            activityBlock.innerHTML = `
+                                <div class="activity-time-badge">自行安排</div>
+                                <div class="activity-info">
+                                    <h4>${foodName}</h4>
+                                    <p>${foodType}</p>
+                                </div>
+                            `;
+
+                            // 隱藏美食卡片
+                            currentCard.classList.add('hidden');
+                        }
+
+                        // 添加到行程
+                        dropZone.appendChild(activityBlock);
+                        makeActivityDraggable(activityBlock);
+                        addNavigationToActivity(activityBlock);
+                        checkEmptyZones();
+                        saveItinerary();
+
+                        // 關閉模態框
+                        modal.classList.remove('active');
+                        currentCard = null;
+                        currentCardType = null;
+                    }
+                });
+            });
+
+            // 取消按鈕和背景點擊
+            document.querySelector('.quick-add-cancel-btn').addEventListener('click', function() {
+                modal.classList.remove('active');
+                currentCard = null;
+                currentCardType = null;
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    currentCard = null;
+                    currentCardType = null;
+                }
+            });
         });
     </script>
+
+    <!-- 快速添加模態框（手機版） -->
+    <div id="quick-add-modal" class="quick-add-modal">
+        <div class="quick-add-content">
+            <h3>⚡ 快速添加</h3>
+            <div class="item-name" id="quick-add-item-name"></div>
+            <div class="quick-add-buttons">
+                <button class="quick-add-day-btn" data-day="day1">📅 Day 1</button>
+                <button class="quick-add-day-btn" data-day="day2">📅 Day 2</button>
+                <button class="quick-add-day-btn" data-day="day3">📅 Day 3</button>
+                <button class="quick-add-day-btn" data-day="day4">📅 Day 4</button>
+                <button class="quick-add-day-btn" data-day="day5">📅 Day 5</button>
+                <button class="quick-add-cancel-btn">取消</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
