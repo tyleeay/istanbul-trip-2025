@@ -617,15 +617,21 @@
         <div id="itinerary-section" class="daily-schedule">
             <h2>🗓️ 逐日行程 (Daily Schedule)</h2>
 
-            <!-- 景點池 -->
+            <!-- 景點/美食池 -->
             <div class="spots-pool">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <h3 style="margin: 0;">🎒 景點清單 (拖動到下方安排行程)</h3>
-                    <button id="reset-all-btn" style="padding: 0.5rem 1rem; background: var(--color-spice-orange); color: white; border: none; border-radius: 6px; cursor: pointer; font-family: var(--main-font); font-size: 0.95rem; transition: all 0.3s ease;">
-                        🔄 重置所有
+                    <div class="pool-tabs">
+                        <button class="pool-tab active" data-tab="spots">🎒 景點清單</button>
+                        <button class="pool-tab" data-tab="food">🍽️ 美食清單</button>
+                    </div>
+                    <button id="reset-all-btn" style="padding: 0.5rem 1rem; background: rgba(255, 140, 105, 0.7); color: white; border: none; border-radius: 6px; cursor: pointer; font-family: var(--main-font); font-size: 0.95rem; transition: all 0.3s ease; font-weight: 600;">
+                        重置所有
                     </button>
                 </div>
-                <div class="spots-grid" id="spots-pool">
+
+                <!-- 景點分頁內容 -->
+                <div class="tab-content active" id="spots-tab-content">
+                    <div class="spots-grid" id="spots-pool">
                     <div class="spot-card" draggable="true" data-spot-id="hagia-sophia" data-area="舊城區">
                         <div class="spot-card-name">聖索菲亞大教堂</div>
                         <div class="spot-card-area">舊城區核心</div>
@@ -693,6 +699,17 @@
                     <div class="spot-card" draggable="true" data-spot-id="camlica-hill" data-area="特色街區">
                         <div class="spot-card-name">恰姆勒加山丘</div>
                         <div class="spot-card-area">特色街區</div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 美食分頁內容 -->
+                <div class="tab-content" id="food-tab-content">
+                    <div class="spots-grid" id="food-pool">
+                        <!-- 美食卡片將由用戶提供資料後添加 -->
+                        <div style="text-align: center; padding: 3rem; color: #999; font-style: italic;">
+                            美食清單待補充...
+                        </div>
                     </div>
                 </div>
             </div>
@@ -810,6 +827,7 @@
         // === 拖放功能 Drag & Drop ===
         let draggedElement = null;
         let draggedFromPool = false;
+        let draggedItemType = null; // 'spot' or 'food'
 
         // 處理景點池中的卡片拖放
         const spotCards = document.querySelectorAll('.spot-card');
@@ -817,6 +835,24 @@
             card.addEventListener('dragstart', function(e) {
                 draggedElement = this;
                 draggedFromPool = true;
+                draggedItemType = 'spot';
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', this.innerHTML);
+            });
+
+            card.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        });
+
+        // 處理美食池中的卡片拖放
+        const foodCards = document.querySelectorAll('.food-card');
+        foodCards.forEach(card => {
+            card.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                draggedFromPool = true;
+                draggedItemType = 'food';
                 this.classList.add('dragging');
                 e.dataTransfer.effectAllowed = 'move';
                 e.dataTransfer.setData('text/html', this.innerHTML);
@@ -869,33 +905,57 @@
                 const day = this.getAttribute('data-day');
 
                 if (draggedFromPool) {
-                    // 從景點池拖動到行程
-                    const spotId = draggedElement.getAttribute('data-spot-id');
-                    const spotName = draggedElement.querySelector('.spot-card-name').textContent;
-                    const spotArea = draggedElement.querySelector('.spot-card-area').textContent;
+                    // 從景點池或美食池拖動到行程
+                    const itemId = draggedElement.getAttribute('data-spot-id') || draggedElement.getAttribute('data-food-id');
 
                     // 創建新的活動區塊
                     const newActivity = document.createElement('div');
-                    newActivity.className = 'activity-block morning';
-                    newActivity.setAttribute('data-spot-id', spotId);
-                    newActivity.innerHTML = `
-                        <div class="activity-time-badge">自行安排</div>
-                        <div class="activity-info">
-                            <h4>${spotName}</h4>
-                            <p><strong>區域：</strong>${spotArea}</p>
-                        </div>
-                    `;
+
+                    if (draggedItemType === 'food') {
+                        // 美食項目
+                        const foodName = draggedElement.querySelector('.food-card-name').textContent;
+                        const foodType = draggedElement.querySelector('.food-card-type').textContent;
+
+                        newActivity.className = 'activity-block food';
+                        newActivity.setAttribute('data-food-id', itemId);
+                        newActivity.setAttribute('data-item-type', 'food');
+                        newActivity.innerHTML = `
+                            <div class="activity-time-badge">自行安排</div>
+                            <div class="activity-info">
+                                <h4>🍽️ ${foodName}</h4>
+                                <p><strong>料理類型：</strong>${foodType}</p>
+                            </div>
+                        `;
+                    } else {
+                        // 景點項目
+                        const spotName = draggedElement.querySelector('.spot-card-name').textContent;
+                        const spotArea = draggedElement.querySelector('.spot-card-area').textContent;
+
+                        newActivity.className = 'activity-block morning';
+                        newActivity.setAttribute('data-spot-id', itemId);
+                        newActivity.setAttribute('data-item-type', 'spot');
+                        newActivity.innerHTML = `
+                            <div class="activity-time-badge">自行安排</div>
+                            <div class="activity-info">
+                                <h4>📍 ${spotName}</h4>
+                                <p><strong>區域：</strong>${spotArea}</p>
+                            </div>
+                        `;
+                    }
 
                     // 添加到行程
                     this.appendChild(newActivity);
                     this.classList.remove('empty');
 
-                    // 隱藏景點池中的卡片
+                    // 隱藏池中的卡片
                     draggedElement.classList.add('hidden');
 
-                    // 使新活動可拖動並可導航
+                    // 使新活動可拖動
                     makeActivityDraggable(newActivity);
-                    addNavigationToActivity(newActivity);
+                    // 只有景點項目才添加導航功能
+                    if (draggedItemType === 'spot') {
+                        addNavigationToActivity(newActivity);
+                    }
                 } else {
                     // 在行程內移動或跨天移動
                     this.appendChild(draggedElement);
@@ -988,7 +1048,7 @@
 
         // === 重置所有行程 ===
         function resetAllItinerary() {
-            if (!confirm('確定要重置所有行程安排嗎？這將清除所有已拖動的景點。')) {
+            if (!confirm('確定要重置所有行程安排嗎？這將清除所有已拖動的景點和美食。')) {
                 return;
             }
 
@@ -1001,6 +1061,11 @@
 
             // 顯示所有景點卡片
             document.querySelectorAll('.spot-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+
+            // 顯示所有美食卡片
+            document.querySelectorAll('.food-card').forEach(card => {
                 card.classList.remove('hidden');
             });
 
@@ -1087,16 +1152,34 @@
                 addNavigationToActivity(block);
             });
 
+            // 分頁切換功能
+            const poolTabs = document.querySelectorAll('.pool-tab');
+            poolTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // 更新分頁按鈕狀態
+                    poolTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 顯示對應的內容
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(targetTab + '-tab-content').classList.add('active');
+                });
+            });
+
             // 重置按鈕事件
             const resetBtn = document.getElementById('reset-all-btn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', resetAllItinerary);
                 resetBtn.addEventListener('mouseenter', function() {
-                    this.style.background = 'var(--color-palace-gold)';
+                    this.style.background = 'rgba(255, 187, 84, 0.8)';
                     this.style.transform = 'scale(1.05)';
                 });
                 resetBtn.addEventListener('mouseleave', function() {
-                    this.style.background = 'var(--color-spice-orange)';
+                    this.style.background = 'rgba(255, 140, 105, 0.7)';
                     this.style.transform = 'scale(1)';
                 });
             }
