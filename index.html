@@ -628,7 +628,8 @@
                     </a>
                     <div id="day-1-content" class="day-content">
                         <div class="content-wrapper">
-                            <p style="color: #999; text-align: center; padding: 2rem;">🚧 待規劃...</p>
+                            <div class="activity-blocks drop-zone empty" data-day="1">
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -638,8 +639,8 @@
                     </a>
                     <div id="day-2-content" class="day-content">
                         <div class="content-wrapper">
-                            <div class="activity-blocks">
-                                <div class="activity-block morning">
+                            <div class="activity-blocks drop-zone" data-day="2">
+                                <div class="activity-block morning locked" draggable="false" data-locked="true" data-spot-id="perfume-workshop">
                                     <div class="activity-time-badge">10:00 - 12:00</div>
                                     <div class="activity-info">
                                         <h4>🌸 博斯普魯斯海峽景觀香水製作工作坊</h4>
@@ -657,8 +658,8 @@
                     </a>
                     <div id="day-3-content" class="day-content">
                         <div class="content-wrapper">
-                            <div class="activity-blocks">
-                                <div class="activity-block evening">
+                            <div class="activity-blocks drop-zone" data-day="3">
+                                <div class="activity-block evening locked" draggable="false" data-locked="true" data-spot-id="bosphorus-cruise">
                                     <div class="activity-time-badge">17:00 - 19:00</div>
                                     <div class="activity-info">
                                         <h4>⛴️ 博斯普魯斯海峽2小時大型團體遊船</h4>
@@ -670,19 +671,115 @@
                         </div>
                     </div>
                 </li>
-                 <li class="day-toggle-container"><a href="javascript:void(0);" class="day-toggle-btn" data-target="day-4-content">Day 4 (12/30): (待規劃)</a><div id="day-4-content" class="day-content"><div class="content-wrapper"><p style="color: #999; text-align: center; padding: 2rem;">🚧 待規劃...</p></div></div></li>
-                 <li class="day-toggle-container"><a href="javascript:void(0);" class="day-toggle-btn" data-target="day-5-content">Day 5 (12/31): (待規劃)</a><div id="day-5-content" class="day-content"><div class="content-wrapper"><p style="color: #999; text-align: center; padding: 2rem;">🚧 待規劃...</p></div></div></li>
+                 <li class="day-toggle-container">
+                    <a href="javascript:void(0);" class="day-toggle-btn" data-target="day-4-content">
+                        Day 4 (12/30): (待規劃)
+                    </a>
+                    <div id="day-4-content" class="day-content">
+                        <div class="content-wrapper">
+                            <div class="activity-blocks drop-zone empty" data-day="4">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                 <li class="day-toggle-container">
+                    <a href="javascript:void(0);" class="day-toggle-btn" data-target="day-5-content">
+                        Day 5 (12/31): (待規劃)
+                    </a>
+                    <div id="day-5-content" class="day-content">
+                        <div class="content-wrapper">
+                            <div class="activity-blocks drop-zone empty" data-day="5">
+                            </div>
+                        </div>
+                    </div>
+                </li>
                  <li class="day-toggle-container">
                     <a href="javascript:void(0);" class="day-toggle-btn" data-target="day-6-content">
                         Day 6 (01/01): 返程
                     </a>
                     <div id="day-6-content" class="day-content">
                         <div class="content-wrapper">
-                            <p style="color: #999; text-align: center; padding: 2rem;">🚧 待規劃...</p>
+                            <div class="activity-blocks drop-zone empty" data-day="6">
+                            </div>
                         </div>
                     </div>
                 </li>
             </ul>
+
+            <!-- 景點池 -->
+            <div class="spots-pool">
+                <h3>🎒 景點清單 (拖動到上方安排行程)</h3>
+                <div class="spots-grid" id="spots-pool">
+                    <div class="spot-card" draggable="true" data-spot-id="hagia-sophia" data-area="舊城區">
+                        <div class="spot-card-name">聖索菲亞大教堂</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="blue-mosque" data-area="舊城區">
+                        <div class="spot-card-name">藍色清真寺</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="topkapi-palace" data-area="舊城區">
+                        <div class="spot-card-name">托普卡帕皇宮</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="basilica-cistern" data-area="舊城區">
+                        <div class="spot-card-name">地下水宮殿</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="hippodrome" data-area="舊城區">
+                        <div class="spot-card-name">君士坦丁堡競技場</div>
+                        <div class="spot-card-area">舊城區核心</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="grand-bazaar" data-area="舊城區">
+                        <div class="spot-card-name">大巴札</div>
+                        <div class="spot-card-area">舊城區市集</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="spice-bazaar" data-area="舊城區">
+                        <div class="spot-card-name">香料市集</div>
+                        <div class="spot-card-area">舊城區市集</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="suleymaniye-mosque" data-area="舊城區">
+                        <div class="spot-card-name">蘇萊曼尼耶清真寺</div>
+                        <div class="spot-card-area">舊城區高處</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="galata-tower" data-area="新城區">
+                        <div class="spot-card-name">加拉達石塔</div>
+                        <div class="spot-card-area">加拉達區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="istiklal-street" data-area="新城區">
+                        <div class="spot-card-name">獨立大街</div>
+                        <div class="spot-card-area">貝伊奧盧區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="taksim-square" data-area="新城區">
+                        <div class="spot-card-name">塔克西姆廣場</div>
+                        <div class="spot-card-area">貝伊奧盧區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="dolmabahce-palace" data-area="博斯普魯斯">
+                        <div class="spot-card-name">多瑪巴切皇宮</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="ortakoy-mosque" data-area="博斯普魯斯">
+                        <div class="spot-card-name">奧塔科伊清真寺</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="maiden-tower" data-area="博斯普魯斯">
+                        <div class="spot-card-name">少女塔</div>
+                        <div class="spot-card-area">博斯普魯斯沿岸</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="balat" data-area="特色街區">
+                        <div class="spot-card-name">巴拉特彩色街區</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="pierre-loti" data-area="特色街區">
+                        <div class="spot-card-name">皮耶洛蒂山丘</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                    <div class="spot-card" draggable="true" data-spot-id="camlica-hill" data-area="特色街區">
+                        <div class="spot-card-name">恰姆勒加山丘</div>
+                        <div class="spot-card-area">特色街區</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -707,6 +804,192 @@
                 this.classList.toggle("active");
                 content.classList.toggle("active");
             });
+        });
+
+        // === 拖放功能 Drag & Drop ===
+        let draggedElement = null;
+        let draggedFromPool = false;
+
+        // 處理景點池中的卡片拖放
+        const spotCards = document.querySelectorAll('.spot-card');
+        spotCards.forEach(card => {
+            card.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                draggedFromPool = true;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', this.innerHTML);
+            });
+
+            card.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        });
+
+        // 處理已排程活動的拖放（排程內部重新排序）
+        function makeActivityDraggable(activityBlock) {
+            if (activityBlock.getAttribute('data-locked') === 'true') {
+                return; // 鎖定的活動不可拖動
+            }
+
+            activityBlock.setAttribute('draggable', 'true');
+
+            activityBlock.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                draggedFromPool = false;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            activityBlock.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        }
+
+        // 處理放置區域
+        const dropZones = document.querySelectorAll('.drop-zone');
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('drag-over');
+                e.dataTransfer.dropEffect = 'move';
+            });
+
+            zone.addEventListener('dragleave', function() {
+                this.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+
+                if (!draggedElement) return;
+
+                const day = this.getAttribute('data-day');
+
+                if (draggedFromPool) {
+                    // 從景點池拖動到行程
+                    const spotId = draggedElement.getAttribute('data-spot-id');
+                    const spotName = draggedElement.querySelector('.spot-card-name').textContent;
+                    const spotArea = draggedElement.querySelector('.spot-card-area').textContent;
+
+                    // 創建新的活動區塊
+                    const newActivity = document.createElement('div');
+                    newActivity.className = 'activity-block morning';
+                    newActivity.setAttribute('data-spot-id', spotId);
+                    newActivity.innerHTML = `
+                        <div class="activity-time-badge">自行安排</div>
+                        <div class="activity-info">
+                            <h4>${spotName}</h4>
+                            <p><strong>區域：</strong>${spotArea}</p>
+                        </div>
+                    `;
+
+                    // 添加到行程
+                    this.appendChild(newActivity);
+                    this.classList.remove('empty');
+
+                    // 隱藏景點池中的卡片
+                    draggedElement.classList.add('hidden');
+
+                    // 使新活動可拖動
+                    makeActivityDraggable(newActivity);
+                } else {
+                    // 在行程內移動或跨天移動
+                    this.appendChild(draggedElement);
+                    this.classList.remove('empty');
+
+                    // 檢查原來的區域是否為空
+                    checkEmptyZones();
+                }
+
+                // 儲存到localStorage
+                saveItinerary();
+                draggedElement = null;
+            });
+        });
+
+        // 檢查並標記空的放置區域
+        function checkEmptyZones() {
+            dropZones.forEach(zone => {
+                const activities = zone.querySelectorAll('.activity-block');
+                if (activities.length === 0) {
+                    zone.classList.add('empty');
+                } else {
+                    zone.classList.remove('empty');
+                }
+            });
+        }
+
+        // 儲存行程到localStorage
+        function saveItinerary() {
+            const itinerary = {};
+            dropZones.forEach(zone => {
+                const day = zone.getAttribute('data-day');
+                const activities = [];
+                zone.querySelectorAll('.activity-block').forEach(activity => {
+                    const spotId = activity.getAttribute('data-spot-id');
+                    const isLocked = activity.getAttribute('data-locked') === 'true';
+                    if (spotId) {
+                        activities.push({
+                            spotId: spotId,
+                            locked: isLocked,
+                            html: activity.outerHTML
+                        });
+                    }
+                });
+                itinerary[day] = activities;
+            });
+            localStorage.setItem('istanbul-itinerary', JSON.stringify(itinerary));
+        }
+
+        // 從localStorage載入行程
+        function loadItinerary() {
+            const saved = localStorage.getItem('istanbul-itinerary');
+            if (!saved) return;
+
+            try {
+                const itinerary = JSON.parse(saved);
+                const hiddenSpots = [];
+
+                Object.keys(itinerary).forEach(day => {
+                    const zone = document.querySelector(`[data-day="${day}"]`);
+                    if (!zone) return;
+
+                    // 清空非鎖定的活動
+                    zone.querySelectorAll('.activity-block:not([data-locked="true"])').forEach(a => a.remove());
+
+                    itinerary[day].forEach(activity => {
+                        if (!activity.locked) {
+                            const temp = document.createElement('div');
+                            temp.innerHTML = activity.html;
+                            const activityBlock = temp.firstChild;
+                            zone.appendChild(activityBlock);
+                            makeActivityDraggable(activityBlock);
+                            hiddenSpots.push(activity.spotId);
+                        }
+                    });
+                });
+
+                // 隱藏已使用的景點
+                hiddenSpots.forEach(spotId => {
+                    const card = document.querySelector(`.spot-card[data-spot-id="${spotId}"]`);
+                    if (card) card.classList.add('hidden');
+                });
+
+                checkEmptyZones();
+            } catch (e) {
+                console.error('載入行程失敗:', e);
+            }
+        }
+
+        // 頁面載入時執行
+        document.addEventListener('DOMContentLoaded', function() {
+            loadItinerary();
+            checkEmptyZones();
+
+            // 使現有的非鎖定活動可拖動
+            document.querySelectorAll('.activity-block:not([data-locked="true"])').forEach(makeActivityDraggable);
         });
     </script>
 

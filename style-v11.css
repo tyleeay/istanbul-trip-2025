@@ -576,63 +576,187 @@ h2, h3 { font-size: var(--font-size-title); }
     border: 2px dashed var(--color-border);
 }
 
-/* 9-3. 活動區塊樣式 - 區塊式排列 */
+/* 9-3. 活動區塊樣式 - 文青手帳風格 */
 .activity-blocks {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    padding: 0.5rem 0;
+    gap: 1.5rem;
+    padding: 1rem 0;
 }
 
 .activity-block {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    background: var(--color-card);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+    background: #FFFEF9;
+    border-radius: 4px;
+    padding: 1.8rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08),
+                0 1px 3px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
-    border-left: 4px solid;
+    cursor: grab;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.activity-block:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+.activity-block.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
 }
 
-/* 時間徽章 */
+.activity-block.locked {
+    cursor: default;
+    background: #FFF9E6;
+}
+
+.activity-block.locked::before {
+    content: '📌';
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    font-size: 1.5rem;
+    transform: rotate(25deg);
+}
+
+/* 紙膠帶效果 */
+.activity-block::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 20%;
+    width: 60%;
+    height: 25px;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(138, 191, 163, 0.4),
+        rgba(138, 191, 163, 0.4) 10px,
+        rgba(159, 207, 181, 0.4) 10px,
+        rgba(159, 207, 181, 0.4) 20px
+    );
+    border-radius: 2px;
+    opacity: 0.7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.activity-block.morning::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(138, 191, 163, 0.5),
+        rgba(138, 191, 163, 0.5) 10px,
+        rgba(159, 207, 181, 0.5) 10px,
+        rgba(159, 207, 181, 0.5) 20px
+    );
+}
+
+.activity-block.afternoon::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(232, 153, 141, 0.5),
+        rgba(232, 153, 141, 0.5) 10px,
+        rgba(242, 181, 172, 0.5) 10px,
+        rgba(242, 181, 172, 0.5) 20px
+    );
+}
+
+.activity-block.evening::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(74, 144, 164, 0.5),
+        rgba(74, 144, 164, 0.5) 10px,
+        rgba(92, 163, 184, 0.5) 10px,
+        rgba(92, 163, 184, 0.5) 20px
+    );
+}
+
+.activity-block.night::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(212, 175, 55, 0.5),
+        rgba(212, 175, 55, 0.5) 10px,
+        rgba(229, 193, 88, 0.5) 10px,
+        rgba(229, 193, 88, 0.5) 20px
+    );
+}
+
+.activity-block:hover:not(.locked) {
+    transform: translateY(-3px) rotate(-0.5deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12),
+                0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* 手寫風格時間標記 */
 .activity-time-badge {
-    flex-shrink: 0;
-    min-width: 110px;
-    padding: 0.8rem 1rem;
-    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
-    color: white;
-    border-radius: 8px;
-    text-align: center;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px dashed var(--color-mint-green);
+    border-radius: 20px;
+    font-family: 'Courier New', monospace;
     font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(138, 191, 163, 0.3);
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* 活動資訊 */
-.activity-info {
-    flex: 1;
+.activity-block.morning .activity-time-badge {
+    border-color: var(--color-mint-green);
+    color: var(--color-mint-green);
 }
 
+.activity-block.afternoon .activity-time-badge {
+    border-color: var(--color-coral-pink);
+    color: var(--color-coral-pink);
+}
+
+.activity-block.evening .activity-time-badge {
+    border-color: var(--color-mosque-blue);
+    color: var(--color-mosque-blue);
+}
+
+.activity-block.night .activity-time-badge {
+    border-color: var(--color-palace-gold);
+    color: var(--color-palace-gold);
+}
+
+/* 活動內容 */
 .activity-info h4 {
     margin: 0 0 0.8rem 0;
-    font-size: 1.25rem;
-    color: var(--color-mosque-blue);
+    font-size: 1.3rem;
+    color: var(--color-text-dark);
     font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 0.3rem;
+}
+
+.activity-info h4::before {
+    content: '✦';
+    position: absolute;
+    left: -1.2rem;
+    color: var(--color-mint-green);
+    font-size: 0.8rem;
+}
+
+.activity-block.morning .activity-info h4::before {
+    color: var(--color-mint-green);
+}
+
+.activity-block.afternoon .activity-info h4::before {
+    color: var(--color-coral-pink);
+}
+
+.activity-block.evening .activity-info h4::before {
+    color: var(--color-mosque-blue);
+}
+
+.activity-block.night .activity-info h4::before {
+    color: var(--color-palace-gold);
 }
 
 .activity-info p {
-    margin: 0.5rem 0;
-    font-size: var(--font-size-content);
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
     color: var(--color-text-light);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .activity-info p strong {
@@ -640,45 +764,123 @@ h2, h3 { font-size: var(--font-size-title); }
     font-weight: 600;
 }
 
-/* 不同時段的配色 */
-.activity-block.morning {
-    border-left-color: var(--color-mint-green);
-    background: linear-gradient(135deg, rgba(138, 191, 163, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+/* 拖放區域 */
+.drop-zone {
+    min-height: 80px;
+    border: 2px dashed var(--color-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
 }
 
-.activity-block.morning .activity-time-badge {
-    background: linear-gradient(135deg, var(--color-mint-green) 0%, var(--color-mint-light) 100%);
-    box-shadow: 0 2px 8px rgba(138, 191, 163, 0.3);
+.drop-zone.drag-over {
+    border-color: var(--color-mosque-blue);
+    background: rgba(74, 144, 164, 0.08);
+    border-style: solid;
 }
 
-.activity-block.afternoon {
-    border-left-color: var(--color-coral-pink);
-    background: linear-gradient(135deg, rgba(232, 153, 141, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+.drop-zone.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-style: italic;
 }
 
-.activity-block.afternoon .activity-time-badge {
-    background: linear-gradient(135deg, var(--color-coral-pink) 0%, var(--color-coral-light) 100%);
-    box-shadow: 0 2px 8px rgba(232, 153, 141, 0.3);
+.drop-zone.empty::before {
+    content: '✨ 拖動景點到這裡安排行程';
+    font-size: 0.9rem;
 }
 
-.activity-block.evening {
-    border-left-color: var(--color-mosque-blue);
-    background: linear-gradient(135deg, rgba(74, 144, 164, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+/* 景點池 */
+.spots-pool {
+    background: linear-gradient(135deg, #F8F6F0 0%, #FFF 100%);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.activity-block.evening .activity-time-badge {
-    background: linear-gradient(135deg, var(--color-mosque-blue) 0%, var(--color-mosque-blue-light) 100%);
-    box-shadow: 0 2px 8px rgba(74, 144, 164, 0.3);
+.spots-pool h3 {
+    font-size: 1.3rem;
+    color: var(--color-mosque-blue);
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px dashed var(--color-border);
 }
 
-.activity-block.night {
-    border-left-color: var(--color-palace-gold);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
-.activity-block.night .activity-time-badge {
-    background: linear-gradient(135deg, var(--color-palace-gold) 0%, var(--color-gold-light) 100%);
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+.spot-card {
+    position: relative;
+    background: #FFFEF9;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 1rem;
+    cursor: grab;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.spot-card:hover {
+    transform: translateY(-2px) rotate(0.5deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.spot-card.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+}
+
+.spot-card.hidden {
+    display: none;
+}
+
+.spot-card-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+}
+
+.spot-card-area {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+/* 小裝飾貼紙 */
+.spot-card::after {
+    content: '✿';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 1.2rem;
+    opacity: 0.3;
+    color: var(--color-mint-green);
+}
+
+.spot-card:nth-child(3n+1)::after {
+    content: '✿';
+    color: var(--color-mint-green);
+}
+
+.spot-card:nth-child(3n+2)::after {
+    content: '❀';
+    color: var(--color-coral-pink);
+}
+
+.spot-card:nth-child(3n)::after {
+    content: '✦';
+    color: var(--color-mosque-blue);
 }
 
 /* 響應式設計 */
