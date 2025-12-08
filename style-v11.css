@@ -1038,6 +1038,171 @@ h2, h3 { font-size: var(--font-size-title); }
     .activity-info p {
         font-size: 0.95rem;
     }
+
+    /* 手機版：分頁和重置按鈕改為垂直排列 */
+    .spots-pool > div:first-child {
+        flex-direction: column !important;
+        gap: 1rem;
+        align-items: stretch !important;
+    }
+
+    .pool-tabs {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pool-tab {
+        flex: 1;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    #reset-all-btn {
+        width: 100%;
+        padding: 0.8rem 1rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* 改善景點和美食卡片在手機上的顯示 */
+    .spots-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .spot-card, .food-card {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* 改善時間標籤文字溢出問題 */
+    .activity-time-badge {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.6rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* 快速添加模態框（手機版） */
+.quick-add-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-add-modal.active {
+    display: flex;
+}
+
+.quick-add-content {
+    background: var(--color-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 90%;
+    width: 320px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.quick-add-content h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    text-align: center;
+}
+
+.quick-add-content .item-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-mosque-blue);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px dashed var(--color-border);
+}
+
+.quick-add-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.quick-add-day-btn {
+    padding: 0.8rem 1.2rem;
+    background: white;
+    border: 2px solid var(--color-mosque-blue);
+    border-radius: 8px;
+    color: var(--color-mosque-blue);
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-add-day-btn:hover {
+    background: var(--color-mosque-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quick-add-cancel-btn {
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 140, 105, 0.7);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.quick-add-cancel-btn:hover {
+    background: rgba(255, 140, 105, 0.9);
+}
+
+/* 手機版提示訊息 */
+.mobile-hint {
+    display: none;
+    background: linear-gradient(135deg, rgba(74, 144, 164, 0.15), rgba(138, 191, 163, 0.15));
+    border: 2px solid var(--color-mosque-blue);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .mobile-hint {
+        display: block;
+    }
 }
 
 /* 10. Hotel Card (Flexbox Layout) */
