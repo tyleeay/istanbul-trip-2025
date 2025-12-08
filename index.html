@@ -1357,10 +1357,33 @@
                         checkEmptyZones();
                         saveItinerary();
 
+                        // 儲存類型以便後續使用
+                        const itemType = currentCardType;
+
                         // 關閉模態框
                         modal.classList.remove('active');
                         currentCard = null;
                         currentCardType = null;
+
+                        // 滾動到該天的行程區域並高亮項目
+                        setTimeout(() => {
+                            dropZone.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+
+                            // 高亮新添加的項目
+                            const highlightColor = itemType === 'spot'
+                                ? 'rgba(138, 191, 163, 0.3)'  // 綠色 for spots
+                                : 'rgba(255, 140, 150, 0.3)';  // 粉紅色 for food
+
+                            activityBlock.style.transition = 'background-color 0.5s ease';
+                            activityBlock.style.backgroundColor = highlightColor;
+
+                            setTimeout(() => {
+                                activityBlock.style.backgroundColor = '';
+                            }, 2000);
+                        }, 300);
                     }
                 });
             });
