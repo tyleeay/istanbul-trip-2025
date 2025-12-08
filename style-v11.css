@@ -732,10 +732,10 @@ h2, h3 { font-size: var(--font-size-title); }
     border-radius: 20px;
     font-family: var(--main-font);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--color-text-dark);
     letter-spacing: 0.5px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.3rem;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -1086,8 +1086,9 @@ h2, h3 { font-size: var(--font-size-title); }
 
     /* 改善時間標籤文字溢出問題 - 寬度自適應 */
     .activity-time-badge {
-        font-size: 0.7rem !important;
-        padding: 0.35rem 0.5rem !important;
+        font-size: 0.85rem !important;
+        padding: 0.35rem 0.6rem !important;
+        margin-bottom: 1rem !important;
         white-space: nowrap;
         display: inline-block !important;
         width: auto !important;
