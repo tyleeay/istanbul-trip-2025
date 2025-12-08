@@ -313,7 +313,7 @@ h2, h3 { font-size: var(--font-size-title); }
     transition: max-height 0.5s ease-out;
 }
 .content-wrapper { padding: 1.5rem 1.5rem; }
-.day-content.active { max-height: 2000px; transition: max-height 0.8s ease-in; }
+.day-content.active { max-height: 5000px; transition: max-height 0.8s ease-in; }
 .content-wrapper h4 { font-size: var(--font-size-title); color: var(--color-primary); margin-top: 1rem; margin-bottom: 0.75rem; }
 .content-wrapper h4:first-child { margin-top: 0; }
 .content-wrapper ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
@@ -1084,15 +1084,15 @@ h2, h3 { font-size: var(--font-size-title); }
         font-size: 0.9rem;
     }
 
-    /* 改善時間標籤文字溢出問題 */
+    /* 改善時間標籤文字溢出問題 - 寬度自適應 */
     .activity-time-badge {
-        font-size: 0.65rem !important;
-        padding: 0.3rem 0.4rem !important;
+        font-size: 0.7rem !important;
+        padding: 0.35rem 0.5rem !important;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: inline-block !important;
+        width: auto !important;
         min-width: auto !important;
-        max-width: 100%;
+        max-width: fit-content !important;
     }
 }
 
