@@ -635,6 +635,58 @@ h2, h3 { font-size: var(--font-size-title); }
     );
 }
 
+/* 美食項目的粉紅色紙膠帶 */
+.activity-block.food::before {
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255, 140, 150, 0.45),
+        rgba(255, 140, 150, 0.45) 10px,
+        rgba(255, 170, 180, 0.45) 10px,
+        rgba(255, 170, 180, 0.45) 20px
+    );
+}
+
+/* 美食卡片樣式 */
+.food-card {
+    position: relative;
+    background: #FFFEF9;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 1rem;
+    cursor: grab;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.food-card:hover {
+    transform: translateY(-2px) rotate(-0.5deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.food-card.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+}
+
+.food-card.hidden {
+    display: none;
+}
+
+.food-card-name {
+    font-family: var(--main-font);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.4rem;
+}
+
+.food-card-type {
+    font-family: var(--main-font);
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+}
+
 .activity-block.afternoon::before {
     background: repeating-linear-gradient(
         45deg,
@@ -800,6 +852,46 @@ h2, h3 { font-size: var(--font-size-title); }
     margin: 0 0 1.5rem 0;
     padding-bottom: 0.8rem;
     border-bottom: 2px dashed var(--color-border);
+}
+
+/* 分頁按鈕 */
+.pool-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pool-tab {
+    padding: 0.6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.pool-tab:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pool-tab.active {
+    background: var(--color-mosque-blue);
+    color: white;
+    border-color: var(--color-mosque-blue);
+}
+
+/* 分頁內容 */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .spots-grid {
