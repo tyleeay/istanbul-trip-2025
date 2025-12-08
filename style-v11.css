@@ -216,87 +216,204 @@ h2, h3 { font-size: var(--font-size-title); }
 .content-wrapper li { font-size: var(--font-size-content); line-height: 1.6; color: var(--color-text-light); padding-left: 1.2rem; position: relative; }
 .content-wrapper li::before { content: '•'; position: absolute; left: 0; top: 0; color: var(--color-primary); font-size: var(--font-size-title); }
 
-/* 9-2. Timeline Style for Daily Schedule */
+/* 9-2. Timeline Style for Daily Schedule - 文青風格 */
 .timeline {
     position: relative;
-    padding: 1rem 0;
+    padding: 2rem 0;
 }
 
 .timeline-item {
     position: relative;
-    padding-left: 120px;
-    padding-bottom: 2.5rem;
+    padding-left: 0;
+    padding-bottom: 3rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
 }
 
 .timeline-item:last-child {
     padding-bottom: 0;
 }
 
-.timeline-item:not(:last-child)::before {
+/* 優雅的時間標籤 - 圓形設計 */
+.timeline-time {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #8B5A2B 0%, #A67C52 100%);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(139, 90, 43, 0.25),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-time::before {
     content: '';
     position: absolute;
-    left: 48px;
-    top: 30px;
-    bottom: -10px;
-    width: 2px;
-    background-color: var(--color-border);
-}
-
-.timeline-time {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 80px;
-    font-size: var(--font-size-content);
-    font-weight: 600;
-    color: var(--color-primary);
-    text-align: right;
-    padding-right: 15px;
-}
-
-.timeline-marker {
-    position: absolute;
-    left: 42px;
-    top: 5px;
-    width: 14px;
-    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
     border-radius: 50%;
-    background-color: var(--color-primary);
-    border: 3px solid var(--color-card);
-    box-shadow: 0 0 0 2px var(--color-border);
-    z-index: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+.timeline-time span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 連接線 - 從圓形中心延伸 */
+.timeline-item:not(:last-child) .timeline-time::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom,
+                #A67C52 0%,
+                rgba(166, 124, 82, 0.5) 50%,
+                rgba(166, 124, 82, 0.2) 100%);
+    border-radius: 2px;
+}
+
+/* 美化的標記點 */
+.timeline-marker {
+    display: none; /* 不再需要，因為時間本身就是標記 */
+}
+
+/* 優雅的內容卡片 */
 .timeline-content {
-    background-color: var(--color-stub-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
+    flex: 1;
+    background: linear-gradient(135deg, #FFFCF5 0%, #FAF3E0 100%);
+    border: none;
+    border-left: 4px solid #8B5A2B;
+    border-radius: 0 16px 16px 0;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 30px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 12px 8px 0;
+    border-color: transparent #8B5A2B transparent transparent;
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1),
+                0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .timeline-content h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: var(--font-size-title);
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
     color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(139, 90, 43, 0.15);
+    padding-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeline-content .activity-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
 }
 
 .timeline-content p {
-    margin: 0.3rem 0;
+    margin: 0;
     font-size: var(--font-size-content);
     color: var(--color-text-light);
-    line-height: 1.6;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.timeline-content p::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: rgba(139, 90, 43, 0.4);
+    font-size: 0.7rem;
 }
 
 .timeline-content p strong {
     color: var(--color-text-dark);
+    font-weight: 600;
+    min-width: 90px;
+    display: inline-block;
 }
 
 /* 如果沒有活動的日子 */
 .timeline-empty {
     text-align: center;
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
     color: #999;
     font-style: italic;
+    background: linear-gradient(135deg,
+                rgba(255, 252, 245, 0.5) 0%,
+                rgba(250, 243, 224, 0.5) 100%);
+    border-radius: 12px;
+    border: 2px dashed var(--color-border);
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    .timeline-item {
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .timeline-time {
+        width: 70px;
+        height: 70px;
+    }
+
+    .timeline-time span {
+        font-size: 1.1rem;
+    }
+
+    .timeline-item:not(:last-child) .timeline-time::after {
+        height: 40px;
+    }
+
+    .timeline-content {
+        border-left-width: 3px;
+        padding: 1.2rem 1.5rem;
+    }
+
+    .timeline-content::before {
+        left: 30px;
+        top: -12px;
+        border-width: 0 8px 12px 8px;
+        border-color: transparent transparent #8B5A2B transparent;
+    }
 }
 
 /* 10. Hotel Card (Flexbox Layout) */
