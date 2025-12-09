@@ -625,7 +625,9 @@ h2, h3 { font-size: var(--font-size-title); }
 
 .activity-block.locked {
     cursor: default;
-    background: #FFF9E6;
+    background: #FFFEF9;
+    border: 2px solid #D4AF37;
+    border-style: dashed;
 }
 
 .activity-block.locked::before {
@@ -1123,18 +1125,32 @@ h2, h3 { font-size: var(--font-size-title); }
     }
 
     .activity-time-badge {
-        min-width: auto;
-        width: 100%;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.95rem;
+        font-size: 0.7rem !important;
+        padding: 0.2rem 0.5rem !important;
+        margin-bottom: 0.3rem !important;
     }
 
     .activity-info h4 {
-        font-size: 1.1rem;
+        font-size: 0.95rem !important;
     }
 
     .activity-info p {
-        font-size: 0.95rem;
+        font-size: 0.75rem !important;
+        -webkit-line-clamp: 2 !important;
+    }
+
+    /* 手機版縮小紙膠帶 */
+    .activity-block::before {
+        width: 40% !important;
+        height: 10px !important;
+        top: 6px !important;
+    }
+
+    /* 手機版縮小裝飾元素 */
+    .activity-block::after {
+        font-size: 1rem !important;
+        bottom: 5px !important;
+        right: 6px !important;
     }
 
     /* 手機版：按鈕改為兩行排列（分頁按鈕一行，重置按鈕一行） */
@@ -1174,17 +1190,6 @@ h2, h3 { font-size: var(--font-size-title); }
         font-size: 0.9rem;
     }
 
-    /* 改善時間標籤文字溢出問題 - 寬度自適應 */
-    .activity-time-badge {
-        font-size: 0.85rem !important;
-        padding: 0.35rem 0.6rem !important;
-        margin-bottom: 1rem !important;
-        white-space: nowrap;
-        display: inline-block !important;
-        width: auto !important;
-        min-width: auto !important;
-        max-width: fit-content !important;
-    }
 }
 
 /* 快速添加模態框（手機版） */
