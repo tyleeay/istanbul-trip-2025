@@ -776,33 +776,6 @@ h2, h3 { font-size: var(--font-size-title); }
     color: var(--color-text-dark);
     font-weight: 600;
     line-height: 1.4;
-    position: relative;
-    padding-left: 0.3rem;
-}
-
-.activity-info h4::before {
-    content: '■ ■ ■';
-    position: absolute;
-    left: -2rem;
-    color: var(--color-mint-green);
-    font-size: 0.4rem;
-    letter-spacing: 0.1rem;
-}
-
-.activity-block.morning .activity-info h4::before {
-    color: var(--color-mint-green);
-}
-
-.activity-block.afternoon .activity-info h4::before {
-    color: var(--color-coral-pink);
-}
-
-.activity-block.evening .activity-info h4::before {
-    color: var(--color-mosque-blue);
-}
-
-.activity-block.night .activity-info h4::before {
-    color: var(--color-palace-gold);
 }
 
 .activity-info p {
