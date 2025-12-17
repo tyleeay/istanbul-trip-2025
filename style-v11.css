@@ -720,6 +720,23 @@ h2, h3 { font-size: var(--font-size-title); }
     font-size: 0.9rem;
     color: #999;
     font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.food-card-map {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+}
+
+.food-card-map a {
+    color: var(--color-mosque-blue);
+    text-decoration: underline;
+    transition: all 0.2s ease;
+}
+
+.food-card-map a:hover {
+    color: var(--color-coral-pink);
 }
 
 .activity-block.afternoon::before {
@@ -868,32 +885,25 @@ h2, h3 { font-size: var(--font-size-title); }
     display: inline;
 }
 
-/* 小裝飾元素在右下角 */
+/* 小裝飾元素在右下角 - 根據類型分類 */
 .activity-block::after {
     content: '✿';
     position: absolute;
     bottom: 8px;
     right: 10px;
     font-size: 1.2rem;
-    opacity: 0.25;
+    opacity: 0.3;
     color: var(--color-mint-green);
 }
 
 .activity-block.food::after {
     content: '🍴';
-    opacity: 0.3;
+    color: var(--color-text-light);
 }
 
-.activity-block.afternoon::after {
-    color: var(--color-coral-pink);
-}
-
-.activity-block.evening::after {
-    color: var(--color-mosque-blue);
-}
-
-.activity-block.night::after {
-    color: var(--color-palace-gold);
+/* 固定預訂不顯示裝飾 */
+.activity-block.locked::after {
+    content: none;
 }
 
 /* 拖放區域 - 網格布局 */
@@ -1040,7 +1050,7 @@ h2, h3 { font-size: var(--font-size-title); }
     font-style: italic;
 }
 
-/* 小裝飾貼紙 */
+/* 小裝飾貼紙 - 統一為花朵符號 */
 .spot-card::after {
     content: '✿';
     position: absolute;
@@ -1051,19 +1061,14 @@ h2, h3 { font-size: var(--font-size-title); }
     color: var(--color-mint-green);
 }
 
-.spot-card:nth-child(3n+1)::after {
-    content: '✿';
-    color: var(--color-mint-green);
-}
-
-.spot-card:nth-child(3n+2)::after {
-    content: '❀';
-    color: var(--color-coral-pink);
-}
-
-.spot-card:nth-child(3n)::after {
-    content: '✦';
-    color: var(--color-mosque-blue);
+/* 美食卡片裝飾 - 餐具符號 */
+.food-card::after {
+    content: '🍴';
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 1rem;
+    opacity: 0.4;
 }
 
 /* 響應式設計 */
